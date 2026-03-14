@@ -1,7 +1,5 @@
 package nlu.fit.web.souvenirecommerce.util;
 
-import nlu.fit.web.souvenirecommerce.util.ApplicationLoader;
-
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
