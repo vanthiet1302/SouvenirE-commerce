@@ -9,6 +9,8 @@
 <html>
 <head>
     <title>Tạo tài khoản</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 <body>
 <div class="split_panel right_panel">
@@ -33,12 +35,18 @@
             <label for="phone">Số điện thoại</label>
         </div>
 
-        <div class="input_group">
-            <input type="password" name="password" placeholder=" " id="matkhau" minlength="8" required>
-            <label for="matkhau">Mật khẩu (Ít nhất 8 ký tự)</label>
-            <span class="eye_icon" onclick="togglePassword('matkhau', this)">
-                    <i class="fa fa-eye"></i>
-                </span>
+        <div class="row g-3 align-items-center">
+            <div class="col-auto">
+                <label for="inputPassword6" class="col-form-label">Password</label>
+            </div>
+            <div class="col-auto">
+                <input type="password" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
+            </div>
+            <div class="col-auto">
+            <span id="passwordHelpInline" class="form-text">
+              Must be 8-20 characters long.
+            </span>
+            </div>
         </div>
 
         <div class="input_group">
@@ -51,6 +59,10 @@
 
         <button type="submit" class="signup_button">ĐĂNG KÝ</button>
     </form>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
 </div>
 
 </body>

@@ -5,7 +5,9 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import nlu.fit.web.souvenirecommerce.dao.UserDao;
+import nlu.fit.web.souvenirecommerce.model.User;
 
 import java.io.IOException;
 
@@ -13,8 +15,13 @@ import java.io.IOException;
 public class RegisterServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if (req.getSession().getAttribute("user") == null) {
+        HttpSession session = req.getSession(false);
+        boolean isLoggedIn = (session != null && session.getAttribute("user") != null);
+
+        if (!isLoggedIn) {
             req.getRequestDispatcher("/WEB-INF/views/auth/register.jsp").forward(req, resp);
+        } else {
+            resp.sendRedirect(req.getContextPath() + "/home");
         }
     }
 
