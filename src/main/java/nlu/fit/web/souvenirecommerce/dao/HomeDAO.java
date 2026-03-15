@@ -11,7 +11,7 @@ import java.util.List;
 public class HomeDAO {
     private final Jdbi jdbi;
 
-    public HomeDAO() throws IOException {
+    public HomeDAO() throws IOException, ClassNotFoundException {
         this.jdbi = JdbiFactory.getJdbi();
     }
     // SQL

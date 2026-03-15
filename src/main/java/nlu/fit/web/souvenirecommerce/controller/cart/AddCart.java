@@ -6,7 +6,7 @@ import jakarta.servlet.http.*;
 import nlu.fit.web.souvenirecommerce.cart.Cart;
 import nlu.fit.web.souvenirecommerce.dao.ProductDAO;
 import nlu.fit.web.souvenirecommerce.model.Product;
-import nlu.fit.web.souvenirecommerce.model.User;
+import nlu.fit.web.souvenirecommerce.model.entity.User;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -52,7 +52,12 @@ public class AddCart extends HttpServlet {
             return;
         }
 
-        Product product = new ProductDAO().getProductById(productId);
+        Product product = null;
+        try {
+            product = new ProductDAO().getProductById(productId);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
         if (product == null || quantity <= 0 || quantity > product.getStockQuantity()) {
             response.sendRedirect(request.getContextPath() + "/home");
             return;

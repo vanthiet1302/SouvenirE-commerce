@@ -9,10 +9,10 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class UserAuth {
+public class UserAuthentication {
     private String userId;
     private int providerId;
     private String identifier; // username or key
-    private String credentialHash; // hashed pass or value
-    private LocalDateTime createdAt;
+    private String credentialHash; // hash pass or value
+
 }

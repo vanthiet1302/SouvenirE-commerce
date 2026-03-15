@@ -28,7 +28,7 @@ public class ProductDAO {
             """;
     private Jdbi jdbi;
 
-    public ProductDAO() throws IOException {
+    public ProductDAO() throws IOException, ClassNotFoundException {
         this.jdbi = JdbiFactory.getJdbi();
     }
 

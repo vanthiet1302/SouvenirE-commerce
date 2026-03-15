@@ -10,7 +10,7 @@ import java.util.List;
 public class CategoryDAO {
     private Jdbi jdbi;
 
-    public CategoryDAO() throws IOException {
+    public CategoryDAO() throws IOException, ClassNotFoundException {
         this.jdbi = JdbiFactory.getJdbi();
     }
     //SQL

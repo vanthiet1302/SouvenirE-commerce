@@ -47,9 +47,9 @@
         <div>
             <label for="gender">Giới tính</label>
             <select name="gender" id="gender">
-                <option value="Male">Nam</option>
-                <option value="Female">Nữ</option>
-                <option value="Other">Khác</option>
+                <option value="MALE">Nam</option>
+                <option value="FEMALE">Nữ</option>
+                <option value="OTHER">Khác</option>
             </select>
         </div>
 
