@@ -1,6 +1,7 @@
 package nlu.fit.web.souvenirecommerce.model;
 
 import lombok.*;
+import nlu.fit.web.souvenirecommerce.model.entity.User;
 
 @Getter
 @Setter
