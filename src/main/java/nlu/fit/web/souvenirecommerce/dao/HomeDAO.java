@@ -58,7 +58,7 @@ public class HomeDAO {
     public List<Category> getBannerCategories(int limit){
         return jdbi.withHandle(handle -> handle.createQuery(SELECT_BANNER_CATEGORIES).bind("limit",limit).mapToBean(Category.class).list());
     }
-    public List<Product> getTopProductsByCategory(int categoryId, int limit){
+    public List<Product> getTopProductsByCategory(String categoryId, int limit){
         return jdbi.withHandle(handle -> handle.createQuery(SELECT_TOP_CATEGORY_PRODUCTS).bind("categoryId",categoryId).bind("limit",limit).mapToBean(Product.class).list());
     }
     public List<Category> getExtensionCategories(List<Integer> usedIds, int limit) {
