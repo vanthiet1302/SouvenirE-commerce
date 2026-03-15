@@ -8,7 +8,6 @@ import java.io.IOException;
 
 import java.util.List;
 
-
 public class ProductDAO {
     // SQL
     private static final String BASE_SELECT = """
@@ -32,23 +31,35 @@ public class ProductDAO {
     public ProductDAO() throws IOException {
         this.jdbi = JdbiFactory.getJdbi();
     }
+
     // Home
     // Best selling
-    public List<Product> getBestSellingProducts(int limit){
+    public List<Product> getBestSellingProducts(int limit) {
         String sql = BASE_SELECT + " ORDER BY p.total_sold DESC LIMIT : limit";
-        return jdbi.withHandle(handle -> handle.createQuery(sql).bind("limit",limit).mapToBean(Product.class).list());
+        return jdbi.withHandle(handle -> handle.createQuery(sql).bind("limit", limit).mapToBean(Product.class).list());
     }
+
     // Newest Product
-    public List<Product> getNewestProducts(int limit){
+    public List<Product> getNewestProducts(int limit) {
         String sql = BASE_SELECT + " ORDER BY p.id DESC LIMIT : limit";
-        return jdbi.withHandle(handle -> handle.createQuery(sql).bind("limit",limit).mapToBean(Product.class).list());
+        return jdbi.withHandle(handle -> handle.createQuery(sql).bind("limit", limit).mapToBean(Product.class).list());
     }
+
     // Top rated
-    public List<Product> getTopRatedProducts(int limit){
+    public List<Product> getTopRatedProducts(int limit) {
         String sql = BASE_SELECT + " ORDER BY avg_rating DESC, review_count DESC LIMIT : limit";
-        return jdbi.withHandle(handle -> handle.createQuery(sql).bind("limit",limit).mapToBean(Product.class).list());
+        return jdbi.withHandle(handle -> handle.createQuery(sql).bind("limit", limit).mapToBean(Product.class).list());
 
     }
 
+    // Product detail
+    public Product getProductById(int id) {
+        String sql = "SELECT * FROM (" + BASE_SELECT + ") t WHERE t.id = :id";
 
+        return jdbi.withHandle(handle -> handle.createQuery(sql)
+                .bind("id", id)
+                .mapToBean(Product.class)
+                .findOne()
+                .orElse(null));
+    }
 }
