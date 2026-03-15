@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class PromotionDAO {
     private Jdbi jdbi;
-    public PromotionDAO() throws IOException {
+    public PromotionDAO() throws IOException, ClassNotFoundException {
         this.jdbi = JdbiFactory.getJdbi();
     }
     //SQL

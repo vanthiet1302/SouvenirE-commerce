@@ -4,6 +4,7 @@ import lombok.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -17,6 +18,7 @@ public class User {
     private String firstName;
     private String email;
     private LocalDate dateOfBirth;
+    private List<UserRole> roles;
     private Gender gender;
     private String avatarUrl;
     private LocalDateTime createdAt;

@@ -6,21 +6,20 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import nlu.fit.web.souvenirecommerce.model.entity.Gender;
+import nlu.fit.web.souvenirecommerce.model.entity.User;
 import nlu.fit.web.souvenirecommerce.service.auth.AuthService;
 
 import java.io.IOException;
-import java.time.LocalDate;
 
-@WebServlet(urlPatterns = {"/register"})
-public class RegisterServlet extends HttpServlet {
+@WebServlet(urlPatterns = {"/login"})
+public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession(false);
         boolean isLoggedIn = (session != null && session.getAttribute("user") != null);
 
         if (!isLoggedIn) {
-            req.getRequestDispatcher("/WEB-INF/views/auth/register.jsp").forward(req, resp);
+            req.getRequestDispatcher("/WEB-INF/views/auth/login.jsp").forward(req, resp);
         } else {
             resp.sendRedirect(req.getContextPath() + "/home");
         }
@@ -28,20 +27,10 @@ public class RegisterServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String lastName = req.getParameter("lastName");
-        String firstName = req.getParameter("firstName");
-        String gender= req.getParameter("gender");
-        String email = req.getParameter("email");
-        String username = req.getParameter("username");
-        LocalDate dob = LocalDate.parse(req.getParameter("dateOfBirth"));
+        String username =  req.getParameter("username");
         String password = req.getParameter("password");
-        String confirmPassword = req.getParameter("confirmPassword");
 
-        /// Giả bộ validate hết rồi đi
-        AuthService  authService = new AuthService();
-        authService.registerCustomer(username, email, password, firstName,
-                lastName, Gender.valueOf(gender), dob);
 
-        resp.sendRedirect(req.getContextPath() + "/home");
+
     }
 }
