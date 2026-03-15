@@ -6,52 +6,111 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fn" uri="jakarta.tags.functions" %>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
+
 <html>
 <head>
     <title>Tạo tài khoản</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 <body>
-<div class="split_panel right_panel">
+<div>
     <h2>Tạo tài khoản</h2>
 
     <c:if test="${not empty error}"><p class="error-text">${error}</p></c:if>
     <c:if test="${not empty success}"><p class="success-text">${success}</p></c:if>
 
-    <form class="signup_form" action="${pageContext.request.contextPath}/register" method="post">
-        <div class="input_group">
-            <input type="text" name="full_name" placeholder=" " id="full_name" required>
-            <label for="full_name">Họ và Tên</label>
+    <form action="/register" method="post">
+        <div>
+            <label for="firstName">Tên</label>
+            <input
+                    type="text"
+                    id="firstName"
+                    name="firstName"
+                    placeholder="Nhập tên của bạn"
+                    required/>
         </div>
 
-        <div class="input_group">
-            <input type="email" name="email" placeholder=" " id="email" required>
-            <label for="email">Địa chỉ Email</label>
+        <div>
+            <label for="lastName">Họ</label>
+            <input
+                    type="text"
+                    id="lastName"
+                    name="lastName"
+                    placeholder="Nhập họ của bạn"
+                    required/>
         </div>
 
-        <div class="input_group">
-            <input type="tel" name="phone" placeholder=" " id="phone" pattern="[0-9]{10,20}" required>
-            <label for="phone">Số điện thoại</label>
+        <div>
+            <label for="gender">Giới tính</label>
+            <select name="gender" id="gender">
+                <option value="Male">Nam</option>
+                <option value="Female">Nữ</option>
+                <option value="Other">Khác</option>
+            </select>
         </div>
 
-        <div class="input_group">
-            <input type="password" name="password" placeholder=" " id="matkhau" minlength="8" required>
-            <label for="matkhau">Mật khẩu (Ít nhất 8 ký tự)</label>
-            <span class="eye_icon" onclick="togglePassword('matkhau', this)">
-                    <i class="fa fa-eye"></i>
-                </span>
+        <div>
+            <label for="dateOfBirth">Ngày sinh</label>
+            <input
+                    type="date"
+                    id="dateOfBirth"
+                    name="dateOfBirth"
+                    required/>
         </div>
 
-        <div class="input_group">
-            <input type="password" name="confirm_password" placeholder=" " id="confirm_password" minlength="8" required>
-            <label for="confirm_password">Xác nhận mật khẩu</label>
-            <span class="eye_icon" onclick="togglePassword('confirm_password', this)">
-                    <i class="fa fa-eye"></i>
-                </span>
+        <div>
+            <label for="email">Email</label>
+            <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Nhập email của bạn"
+                    required/>
         </div>
 
-        <button type="submit" class="signup_button">ĐĂNG KÝ</button>
+        <div>
+            <label for="username">Tên đăng nhập</label>
+            <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    placeholder="Nhập tên đăng nhập của bạn"
+                    required/>
+        </div>
+
+        <div>
+            <label for="password">Mật khẩu</label>
+            <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Nhập mật khẩu của bạn"
+                    required/>
+        </div>
+
+        <div>
+            <label for="confirmPassword">Xác minh mật khẩu</label>
+            <input
+                    type="password"
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    placeholder="Nhập lại mật khẩu của bạn"
+                    required/>
+        </div>
+
+        <div>
+            <input type="submit" value="Submit">
+        </div>
+
     </form>
-</div>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
+</div>
 </body>
 </html>

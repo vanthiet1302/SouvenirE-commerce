@@ -1,28 +1,41 @@
 package nlu.fit.web.souvenirecommerce.dao;
 
-import nlu.fit.web.souvenirecommerce.util.DBContext;
-import nlu.fit.web.souvenirecommerce.util.PasswordUtils;
+import nlu.fit.web.souvenirecommerce.model.entity.User;
+import org.jdbi.v3.sqlobject.customizer.Bind;
+import org.jdbi.v3.sqlobject.statement.SqlUpdate;
+import org.jdbi.v3.sqlobject.customizer.BindBean;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
+public interface UserDao {
 
-public class UserDao {
-    public boolean register(String email, String password, String fullName, String phone) {
-        String sql = "INSERT INTO users (full_name, email, password, phone, status, role, avatar) " +
-                "VALUES (?, ?, ?, ?, 'Active', 'User', 'default-avatar.png')";
+    @SqlUpdate("""
+                INSERT INTO users(
+                    id, username, last_name, first_name, email,
+                    date_of_birth, avatar_url, gender, created_at, updated_at
+                )
+                VALUES (
+                    :id, :username, :lastName, :firstName, :email,
+                    :dateOfBirth, :avatarUrl, :gender, :createdAt, :updatedAt
+                )
+            """)
+    int insert(@BindBean User user);
 
-        try (Connection conn = new DBContext().getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+    @SqlUpdate("""
+                UPDATE users
+                SET 
+                    last_name = :lastName,
+                    first_name = :firstName,
+                    email = :email,
+                    date_of_birth = :dateOfBirth,
+                    avatar_url = :avatarUrl,
+                    gender = :gender,
+                    updated_at = :updatedAt
+                WHERE id = :id
+            """)
+    int update(@BindBean User user);
 
-            ps.setString(1, fullName);
-            ps.setString(2, email);
-            ps.setString(3, PasswordUtils.hashPassword(password));
-            ps.setString(4, phone);
-            return ps.executeUpdate() > 0;
+    @SqlUpdate("DELETE FROM users WHERE id = :id")
+    int delete(@Bind("id") String id);
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
+
+
 }
