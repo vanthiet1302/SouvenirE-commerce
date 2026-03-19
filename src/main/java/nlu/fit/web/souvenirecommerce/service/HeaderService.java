@@ -9,7 +9,7 @@ import java.util.List;
 public class HeaderService {
     private final CategoryDAO categoryDAO = new CategoryDAO();
 
-    public HeaderService() throws IOException {
+    public HeaderService() throws IOException, ClassNotFoundException {
     }
     public List<Category> getAll(){
         return categoryDAO.getAlCategories();
