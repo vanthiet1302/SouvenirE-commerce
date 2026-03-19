@@ -4,7 +4,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import lombok.SneakyThrows;
 import nlu.fit.web.souvenirecommerce.model.Category;
-import nlu.fit.web.souvenirecommerce.model.User;
+import nlu.fit.web.souvenirecommerce.model.entity.User;
 import nlu.fit.web.souvenirecommerce.service.HeaderService;
 
 import java.io.IOException;
