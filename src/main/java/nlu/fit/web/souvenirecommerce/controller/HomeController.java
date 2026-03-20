@@ -10,7 +10,7 @@ import nlu.fit.web.souvenirecommerce.service.HomeService;
 
 import java.io.IOException;
 
-@WebServlet(urlPatterns = {"/home", "/"})
+@WebServlet(urlPatterns = {"/home"})
 public class HomeController extends HttpServlet {
 
     private HomeService homeService;
