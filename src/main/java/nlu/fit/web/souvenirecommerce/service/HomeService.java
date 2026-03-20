@@ -26,7 +26,7 @@ public class HomeService {
     private static final int NEWEST_LIMIT = 4;
 
 
-    public HomeService() throws IOException {
+    public HomeService() throws IOException, ClassNotFoundException {
     }
     // banner
     public List<Category> getBannerCategories(){

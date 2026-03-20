@@ -8,7 +8,7 @@ import nlu.fit.web.souvenirecommerce.model.entity.User;
 import nlu.fit.web.souvenirecommerce.model.entity.UserAuthentication;
 import nlu.fit.web.souvenirecommerce.model.entity.UserRole;
 import nlu.fit.web.souvenirecommerce.util.JdbiUtil;
-import nlu.fit.web.souvenirecommerce.util.PasswordUtils;
+import nlu.fit.web.souvenirecommerce.util.PasswordUtil;
 
 import java.time.LocalDate;
 import java.util.UUID;
@@ -24,7 +24,7 @@ public class AuthService {
             UserRoleDAO roleDAO = handle.attach(UserRoleDAO.class);
 
             String userId = UUID.randomUUID().toString();
-            String hashPassword = PasswordUtils.hashPassword(password);
+            String hashPassword = PasswordUtil.hashPassword(password);
             String avatarUrl = "default-avt.jpg";
 
             User user = User.builder()

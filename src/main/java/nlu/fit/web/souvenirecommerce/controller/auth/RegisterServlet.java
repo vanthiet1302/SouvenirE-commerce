@@ -37,6 +37,8 @@ public class RegisterServlet extends HttpServlet {
         String password = req.getParameter("password");
         String confirmPassword = req.getParameter("confirmPassword");
 
+
+
         /// Giả bộ validate hết rồi đi
         AuthService  authService = new AuthService();
         authService.registerCustomer(username, email, password, firstName,
