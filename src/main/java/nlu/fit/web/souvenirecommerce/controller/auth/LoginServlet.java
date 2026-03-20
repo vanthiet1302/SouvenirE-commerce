@@ -6,8 +6,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import nlu.fit.web.souvenirecommerce.model.entity.User;
-import nlu.fit.web.souvenirecommerce.service.auth.AuthService;
 
 import java.io.IOException;
 
