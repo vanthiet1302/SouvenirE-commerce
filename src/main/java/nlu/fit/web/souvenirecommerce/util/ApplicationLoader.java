@@ -1,4 +1,4 @@
-package nlu.fit.web.souvenirecommerce.cloudinary;
+package nlu.fit.web.souvenirecommerce.util;
 
 import java.io.InputStream;
 import java.util.Properties;
@@ -20,6 +20,10 @@ public class ApplicationLoader {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static Properties getProperties() {
+        return prop;
     }
 
     public static String get(String key) {

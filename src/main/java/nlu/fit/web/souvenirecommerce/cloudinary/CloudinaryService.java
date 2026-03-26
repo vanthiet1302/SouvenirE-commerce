@@ -2,7 +2,7 @@ package nlu.fit.web.souvenirecommerce.cloudinary;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
-import nlu.fit.web.souvenirecommerce.cloudinary.ApplicationLoader;
+import nlu.fit.web.souvenirecommerce.util.ApplicationLoader;
 
 import java.util.*;
 
@@ -12,8 +12,8 @@ public class CloudinaryService {
     static {
         Map<String, String> config = new HashMap<>();
         config.put("cloud_name", ApplicationLoader.get("cloud_name"));
-        config.put("api_key", ApplicationLoader.get("api_key"));
-        config.put("api_secret", ApplicationLoader.get("api_secret"));
+        config.put("api_key", ApplicationLoader.get("cloud_api_key"));
+        config.put("api_secret", ApplicationLoader.get("cloud_api_secret"));
         cloudinary = new Cloudinary(config);
     }
 
