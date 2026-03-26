@@ -44,7 +44,6 @@ public class AdminCustomerController extends HttpServlet {
         req.setAttribute("totalPages", totalPages);
         req.setAttribute("totalCustomers", totalCustomers);
 
-        // Get message from session and remove it
         String message = (String) req.getSession().getAttribute("message");
         String messageType = (String) req.getSession().getAttribute("messageType");
         if (message != null) {
