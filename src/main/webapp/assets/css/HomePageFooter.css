@@ -1,3 +1,4 @@
+/* ======================= FOOTER WRAPPER – FULL WIDTH =========================== */
 .footer-wrapper {
     width: 100vw;
     position: relative;
@@ -10,6 +11,7 @@
     padding: 40px 0;
 }
 
+/* ============================== FOOTER CONTAINER ===================== */
 .footer-container {
     max-width: 1300px;
     margin: 0 auto;
@@ -22,6 +24,7 @@
     font-family: Arial, sans-serif;
 }
 
+/* ============== GRID 4 CỘT ============= */
 .footer-columns {
     width: 100%;
     display: grid;
@@ -30,6 +33,7 @@
     margin-bottom: 40px;
 }
 
+/* ===================== TIÊU ĐỀ CỘT =================== */
 .footer-col h3 {
     font-size: 16px;
     font-weight: 700;
@@ -37,6 +41,7 @@
     color: #000;
 }
 
+/* ==================== LINK & TEXT ====================== */
 .footer-col a,
 .footer-col p {
     font-size: 14px;
@@ -54,6 +59,8 @@
 .footer-col a:hover {
     color: #000;
 }
+
+/* ===============ICON PAYMENT & SHIPPING (HỢP VỚI HTML MỚI)================== */
 
 .icon-row {
     display: flex;
@@ -84,12 +91,14 @@
     object-fit: contain;
 }
 
+/* Hover icon */
 .icon-box:hover {
     transform: scale(1.07);
     background: #fff;
     border-color: #ccc;
 }
 
+/* =============== SOCIAL ICONS – FONT AWESOME ================= */
 .social-icons {
     display: flex;
     gap: 14px;
@@ -105,27 +114,18 @@
     transition: 0.25s ease;
 }
 
-.social-icons a:nth-child(1) i {
-    color: #1877F2;
-}
-
-.social-icons a:nth-child(2) i {
-    color: #E4405F;
-}
-
-.social-icons a:nth-child(3) i {
-    color: #000000;
-}
-
-.social-icons a:nth-child(4) i {
-    color: #FF0000;
-}
-
+/* --- Màu thương hiệu --- */
+.social-icons a:nth-child(1) i { color: #1877F2; }
+.social-icons a:nth-child(2) i { color: #E4405F; }
+.social-icons a:nth-child(3) i { color: #000000; }
+.social-icons a:nth-child(4) i { color: #FF0000; }
+/* --- Hover --- */
 .social-icons i:hover {
     transform: scale(1.2);
     opacity: 0.85;
 }
 
+/* =========SUBSCRIBE BOX======== */
 .subscribe-box {
     display: flex;
     margin-top: 10px;
@@ -162,6 +162,7 @@
     background: #333;
 }
 
+/* ===================  FOOTER BOTTOM ===================== */
 .footer-bottom {
     text-align: center;
 }
@@ -172,6 +173,7 @@
     line-height: 25px;
 }
 
+/* ====================  RESPONSIVE =================== */
 @media (max-width: 1024px) {
     .footer-columns {
         grid-template-columns: repeat(2, 1fr);

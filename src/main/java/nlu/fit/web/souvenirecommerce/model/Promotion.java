@@ -1,22 +1,70 @@
 package nlu.fit.web.souvenirecommerce.model;
 
-import lombok.*;
 import java.time.LocalDateTime;
-import org.jdbi.v3.core.mapper.reflect.ColumnName;
-
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 
 public class Promotion {
-    private String id; //UUID
-    @ColumnName("product_id")
-    private String productId; //FK
-    @ColumnName("discount_percent")
+
+    private int id;
+    private int productId;
     private int discountPercent;
-    @ColumnName("start_date")
     private LocalDateTime startDate;
-    @ColumnName("end_date")
     private LocalDateTime endDate;
+
+    public Promotion() {
+    }
+
+    public Promotion(int id, int productId, int discountPercent,
+                     LocalDateTime startDate, LocalDateTime endDate) {
+        this.id = id;
+        this.productId = productId;
+        this.discountPercent = discountPercent;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getProductId() {
+        return productId;
+    }
+
+    public void setProductId(int productId) {
+        this.productId = productId;
+    }
+
+    public int getDiscountPercent() {
+        return discountPercent;
+    }
+
+    public void setDiscountPercent(int discountPercent) {
+        this.discountPercent = discountPercent;
+    }
+
+    public LocalDateTime getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(LocalDateTime startDate) {
+        this.startDate = startDate;
+    }
+
+    public LocalDateTime getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(LocalDateTime endDate) {
+        this.endDate = endDate;
+    }
+
+    /* ===== Helper ===== */
+    public boolean isActive(LocalDateTime now) {
+        return (startDate == null || !now.isBefore(startDate))
+                && (endDate == null || !now.isAfter(endDate));
+    }
 }

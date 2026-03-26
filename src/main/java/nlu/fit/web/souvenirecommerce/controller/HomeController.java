@@ -5,17 +5,16 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import lombok.SneakyThrows;
+import nlu.fit.web.souvenirecommerce.dto.HomePageDTO;
 import nlu.fit.web.souvenirecommerce.service.HomeService;
 
 import java.io.IOException;
 
-@WebServlet(urlPatterns = {"/home"})
+@WebServlet("/home")
 public class HomeController extends HttpServlet {
 
     private HomeService homeService;
 
-    @SneakyThrows
     @Override
     public void init() {
         homeService = new HomeService();
@@ -24,14 +23,27 @@ public class HomeController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // data
-        request.setAttribute("bannerCategories", homeService.getBannerCategories());
-        request.setAttribute("topCategories", homeService.getTopCategoryWithProducts());
-        request.setAttribute("extensionCategories", homeService.ExtensionCategories());
-        request.setAttribute("topRatedProducts", homeService.topRated());
-        request.setAttribute("newestProducts", homeService.newest());
 
+        HomePageDTO dto = homeService.getHomePageData();
 
+        /* ===== PAGE DATA ===== */
+        request.setAttribute("data", dto);
+
+        /* ===== HEADER MODE ===== */
+        request.setAttribute("headerMode", "MENU");
+
+        /* ===== HEADER OVERLAY ===== */
+        request.setAttribute("enableHeaderOverlay", false);
+
+        /* ===== LAYOUT CONFIG ===== */
+        request.setAttribute("pageTitle", "Trang chủ");
+        request.setAttribute("pageCss", "HomePageMain.css");
+        request.setAttribute("pageJs", "HomePage.js");
+        request.setAttribute("contentPage", "/home.jsp");
+
+        /* ===== FORWARD TO LAYOUT ===== */
+        request.getRequestDispatcher("/layoutMain.jsp")
+                .forward(request, response);
     }
 
-    }
+}

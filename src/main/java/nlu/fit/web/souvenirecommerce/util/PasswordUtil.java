@@ -3,11 +3,16 @@ package nlu.fit.web.souvenirecommerce.util;
 import org.mindrot.jbcrypt.BCrypt;
 
 public class PasswordUtil {
-    public static String hashPassword(String rawPassword) {
-        return BCrypt.hashpw(rawPassword, BCrypt.gensalt());
+
+    // Hàm băm mật khẩu (Dùng khi Đăng ký)
+    public static String hashPassword(String plainPassword) {
+        // gensalt() tạo ra một chuỗi muối ngẫu nhiên để tăng độ bảo mật
+        return BCrypt.hashpw(plainPassword, BCrypt.gensalt());
     }
 
-    public static boolean checkPassword(String rawPassword, String hashedPassword) {
-        return BCrypt.checkpw(rawPassword, hashedPassword);
+    // Hàm kiểm tra mật khẩu (Dùng khi Đăng nhập)
+    public static boolean checkPassword(String plainPassword, String hashedPassword) {
+        // So sánh mật khẩu người dùng nhập với chuỗi đã mã hóa trong CSDL
+        return BCrypt.checkpw(plainPassword, hashedPassword);
     }
 }
