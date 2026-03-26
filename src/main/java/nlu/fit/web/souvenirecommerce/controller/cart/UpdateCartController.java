@@ -11,21 +11,21 @@ import nlu.fit.web.souvenirecommerce.cart.CartItem;
 import java.io.IOException;
 
 public class UpdateCartController extends HttpServlet {
-
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
 
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
-
+        
         try {
             int productId = Integer.parseInt(request.getParameter("productId"));
-            int quantity = Integer.parseInt(request.getParameter("quantity"));
+            int quantity  = Integer.parseInt(request.getParameter("quantity"));
 
             HttpSession session = request.getSession();
             Cart cart = (Cart) session.getAttribute("cart");
-
+            
             if (cart == null) {
                 response.getWriter().write("{\"success\":false}");
                 return;
@@ -37,7 +37,7 @@ public class UpdateCartController extends HttpServlet {
             } else {
                 cart.updateItem(productId, quantity);
             }
-
+            
             session.setAttribute("cart", cart);
 
             // Lấy subtotal của item (nếu còn)
@@ -46,16 +46,17 @@ public class UpdateCartController extends HttpServlet {
 
             // Trả JSON cho realtime UI
             String json = """
-                    {
-                      "success": true,
-                      "totalQuantity": %d,
-                      "total": %.0f,
-                      "itemSubtotal": %.0f
-                    }
-                    """.formatted(
+            {
+              "success": true,
+              "totalQuantity": %d,
+              "total": %.0f,
+              "itemSubtotal": %.0f
+            }
+            """.formatted(
                     cart.totalQuantity(),
                     cart.total(),
-                    itemSubtotal);
+                    itemSubtotal
+            );
 
             response.getWriter().write(json);
 
@@ -64,10 +65,9 @@ public class UpdateCartController extends HttpServlet {
             response.getWriter().write("{\"success\":false}");
         }
     }
-
+    
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request, response);
     }
 }

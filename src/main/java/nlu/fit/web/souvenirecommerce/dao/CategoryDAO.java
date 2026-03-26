@@ -1,72 +1,221 @@
 package nlu.fit.web.souvenirecommerce.dao;
 
 import nlu.fit.web.souvenirecommerce.model.Category;
-import nlu.fit.web.souvenirecommerce.util.JdbiFactory;
-import org.jdbi.v3.core.Jdbi;
+import nlu.fit.web.souvenirecommerce.util.DBContext;
 
-import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CategoryDAO {
-    private Jdbi jdbi;
 
-    public CategoryDAO() throws IOException, ClassNotFoundException {
-        this.jdbi = JdbiFactory.getJdbi();
-    }
+    // Get all categories
+    public List<Category> getAllCategories() {
+        List<Category> list = new ArrayList<>();
+        String sql = "SELECT id, category_name, image FROM categories ORDER BY id DESC";
 
-    //SQL
-    private static final String SELECT_ALL = """
-                SELECT id, category_name AS name, image
-                FROM categories
-                ORDER BY id DESC
-            """;
-    private static final String SELECT_BY_ID = """
-                SELECT id, category_name AS name, image
-                FROM categories
-                WHERE id = :id
-            """;
-    private static final String SELECT_TOP_SELLING = """
-                SELECT c.id, c.category_name AS name, c.image
-                FROM categories c
-                JOIN products p ON c.id = p.category_id
-                GROUP BY c.id, c.category_name, c.image
-                ORDER BY SUM(p.total_sold) DESC LIMIT :limit
-            """;
-    private static final String SELECT_TOP_SELLING_IDS = """
-                SELECT category_id
-                FROM products
-                GROUP BY category_id
-                ORDER BY SUM(total_sold) DESC LIMIT :limit
-            """;
-    private static final String SELECT_NOTIN = """
-                SELECT id, category_name AS name, image
-                FROM categories
-                WHERE id NOT IN (<ids>)
-            """;
+        try (Connection conn = DBContext.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
 
-    // method
-    public List<Category> getAlCategories() {
-        return jdbi.withHandle(handle -> handle.createQuery(SELECT_ALL).mapToBean(Category.class).list());
-    }
-
-    public Category getCategoryById(int id) {
-        return jdbi.withHandle(handle -> handle.createQuery(SELECT_BY_ID).bind("id", id).mapToBean(Category.class).findOne().orElse(null));
-    }
-
-    public List<Category> getTopSellingCategories(int limit) {
-        return jdbi.withHandle(handle -> handle.createQuery(SELECT_TOP_SELLING).bind("limit", limit).mapToBean(Category.class).list());
-    }
-
-    public List<Integer> getTopSellingCategoriesIds(int limit) {
-        return jdbi.withHandle(handle -> handle.createQuery(SELECT_TOP_SELLING_IDS).bind("limit", limit).mapTo(Integer.class).list());
-    }
-
-    public List<Category> getCategoriesNotIn(List<Integer> usedIds) {
-        if (usedIds == null || usedIds.isEmpty()) {
-            return getAlCategories();
+            while (rs.next()) {
+                list.add(new Category(
+                        rs.getInt("id"),
+                        rs.getString("category_name"),
+                        rs.getString("image")
+                ));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        return jdbi.withHandle(handle -> handle.createQuery(SELECT_NOTIN).bindList("ids", usedIds).mapToBean(Category.class).list());
+        return list;
     }
 
+    // Get category by id
+    public Category getCategoryById(int id) {
+        String sql = "SELECT id, category_name, image FROM categories WHERE id = ?";
 
+        try (Connection conn = DBContext.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return new Category(
+                        rs.getInt("id"),
+                        rs.getString("category_name"),
+                        rs.getString("image")
+                );
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    // Top selling categories
+    public List<Category> getTopSellingCategories(int limit) {
+        String sql = """
+            SELECT c.id, c.category_name, c.image
+            FROM categories c
+            JOIN products p ON c.id = p.category_id
+            GROUP BY c.id, c.category_name, c.image
+            ORDER BY SUM(p.total_sold) DESC
+            LIMIT ?
+        """;
+
+        List<Category> list = new ArrayList<>();
+
+        try (Connection conn = DBContext.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setInt(1, limit);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                list.add(new Category(
+                        rs.getInt("id"),
+                        rs.getString("category_name"),
+                        rs.getString("image")
+                ));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    // Get top selling category ids
+    public List<Integer> getTopSellingCategoryIds(int limit) {
+        String sql = """
+            SELECT category_id
+            FROM products
+            GROUP BY category_id
+            ORDER BY SUM(total_sold) DESC
+            LIMIT ?
+        """;
+
+        List<Integer> ids = new ArrayList<>();
+
+        try (Connection conn = DBContext.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setInt(1, limit);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                ids.add(rs.getInt("category_id"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ids;
+    }
+
+    // Categories not in top selling
+    public List<Category> getCategoriesNotIn(List<Integer> usedIds) {
+
+        if (usedIds == null || usedIds.isEmpty()) {
+            return getAllCategories();
+        }
+
+        StringBuilder sql = new StringBuilder(
+                "SELECT id, category_name, image FROM categories WHERE id NOT IN ("
+        );
+
+        for (int i = 0; i < usedIds.size(); i++) {
+            sql.append("?");
+            if (i < usedIds.size() - 1) sql.append(",");
+        }
+        sql.append(")");
+
+        List<Category> list = new ArrayList<>();
+
+        try (Connection conn = DBContext.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql.toString())) {
+
+            for (int i = 0; i < usedIds.size(); i++) {
+                ps.setInt(i + 1, usedIds.get(i));
+            }
+
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Category(
+                        rs.getInt("id"),
+                        rs.getString("category_name"),
+                        rs.getString("image")
+                ));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    /* ================= ADMIN CRUD ================= */
+
+    public boolean insertCategory(Category category) {
+        String sql = "INSERT INTO categories (category_name, image) VALUES (?, ?)";
+
+        try (Connection conn = DBContext.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, category.getName());
+            ps.setString(2, category.getImage());
+            return ps.executeUpdate() > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public boolean updateCategory(Category category) {
+        String sql = "UPDATE categories SET category_name = ?, image = ? WHERE id = ?";
+
+        try (Connection conn = DBContext.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, category.getName());
+            ps.setString(2, category.getImage());
+            ps.setInt(3, category.getId());
+            return ps.executeUpdate() > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public boolean deleteCategory(int id) {
+        String sql = "DELETE FROM categories WHERE id = ?";
+
+        try (Connection conn = DBContext.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setInt(1, id);
+            return ps.executeUpdate() > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public int getProductCountByCategory(int categoryId) {
+        String sql = "SELECT COUNT(*) as total FROM products WHERE category_id = ?";
+
+        try (Connection conn = DBContext.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setInt(1, categoryId);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("total");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
 }

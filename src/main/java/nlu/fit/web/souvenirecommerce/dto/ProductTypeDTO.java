@@ -1,0 +1,67 @@
+package nlu.fit.web.souvenirecommerce.dto;
+
+import nlu.fit.web.souvenirecommerce.Enums.ProductSort;
+import nlu.fit.web.souvenirecommerce.model.Category;
+
+import java.util.List;
+
+public class ProductTypeDTO {
+
+    private Category category;
+    private List<ProductCardDTO> products;
+
+    private int currentPage;
+    private int totalPages;
+    private int totalProducts;
+    private int totalReviews;
+
+    private Integer minPrice;
+    private Integer maxPrice;
+    private Integer rating;
+    private ProductSort sort;
+    private String sortParam;
+
+    /* ===== Getter / Setter ===== */
+
+    public Category getCategory() { return category; }
+    public void setCategory(Category category) { this.category = category; }
+
+    public int getTotalReviews() {
+        return totalReviews;
+    }
+
+    public void setTotalReviews(int totalReviews) {
+        this.totalReviews = totalReviews;
+    }
+
+    public List<ProductCardDTO> getProducts() { return products; }
+    public void setProducts(List<ProductCardDTO> products) { this.products = products; }
+
+    public int getCurrentPage() { return currentPage; }
+    public void setCurrentPage(int currentPage) { this.currentPage = currentPage; }
+
+    public int getTotalPages() { return totalPages; }
+    public void setTotalPages(int totalPages) { this.totalPages = totalPages; }
+
+    public int getTotalProducts() { return totalProducts; }
+    public void setTotalProducts(int totalProducts) { this.totalProducts = totalProducts; }
+
+    public Integer getMinPrice() { return minPrice; }
+    public void setMinPrice(Integer minPrice) { this.minPrice = minPrice; }
+
+    public Integer getMaxPrice() { return maxPrice; }
+    public void setMaxPrice(Integer maxPrice) { this.maxPrice = maxPrice; }
+
+    public ProductSort getSort() { return sort; }
+    public void setSort(ProductSort sort) { this.sort = sort; }
+
+    public Integer getRating() {
+        return rating;
+    }
+    public void setRating(Integer rating) {
+        this.rating = rating;
+    }
+
+    public String getSortParam() { return sortParam; }
+    public void setSortParam(String sortParam) { this.sortParam = sortParam; }
+}

@@ -2,11 +2,14 @@ package nlu.fit.web.souvenirecommerce.controller.cart;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.*;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import nlu.fit.web.souvenirecommerce.cart.Cart;
 import nlu.fit.web.souvenirecommerce.dao.ProductDAO;
 import nlu.fit.web.souvenirecommerce.model.Product;
-import nlu.fit.web.souvenirecommerce.model.entity.User;
+import nlu.fit.web.souvenirecommerce.model.User;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -21,7 +24,7 @@ public class AddCart extends HttpServlet {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("userInSession");
 
-        // check for user login
+        // ===== CHƯA LOGIN =====
         if (user == null) {
             if ("XMLHttpRequest".equals(request.getHeader("X-Requested-With"))) {
                 response.setContentType("application/json");
@@ -41,6 +44,7 @@ public class AddCart extends HttpServlet {
             return;
         }
 
+        // ===== PARAM =====
         int productId;
         int quantity;
 
@@ -52,29 +56,26 @@ public class AddCart extends HttpServlet {
             return;
         }
 
-        Product product = null;
-        try {
-            product = new ProductDAO().getProductById(productId);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+        Product product = new ProductDAO().getProductById(productId);
         if (product == null || quantity <= 0 || quantity > product.getStockQuantity()) {
             response.sendRedirect(request.getContextPath() + "/home");
             return;
         }
 
+        // ===== CART =====
         Cart cart = (Cart) session.getAttribute("cart");
-        if (cart == null)
-            cart = new Cart();
+        if (cart == null) cart = new Cart();
 
         cart.addItem(product, quantity);
         session.setAttribute("cart", cart);
 
+        // ===== BUY NOW =====
         if ("true".equals(request.getParameter("buyNow"))) {
             response.sendRedirect(request.getContextPath() + "/checkout");
             return;
         }
 
+        // ===== AJAX =====
         if ("XMLHttpRequest".equals(request.getHeader("X-Requested-With"))) {
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
@@ -88,6 +89,7 @@ public class AddCart extends HttpServlet {
             return;
         }
 
+        // ===== FORM =====
         response.sendRedirect(request.getHeader("Referer"));
     }
 

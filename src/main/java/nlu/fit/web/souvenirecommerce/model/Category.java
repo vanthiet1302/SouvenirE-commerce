@@ -1,19 +1,55 @@
 package nlu.fit.web.souvenirecommerce.model;
-import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
-import org.jdbi.v3.core.mapper.reflect.ColumnName;
-
-
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 
 public class Category {
-    private String id; //UUID
-    private String name;
-    @ColumnName("banner_url")
-    private String bannerUrl;
+    private int id;
+    private String category_name;
+    private String image;
     private List<Product> products;
+
+    public Category() {}
+
+    public Category(int id, String name) {
+        this.id = id;
+        this.category_name = name;
+        this.products = new ArrayList<>();
+    }
+    public Category(int id, String name, String image) {
+        this.id = id;
+        this.category_name = name;
+        this.image = image;
+    }
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return category_name;
+    }
+
+    public void setName(String name) {
+        this.category_name = name;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
 }
+

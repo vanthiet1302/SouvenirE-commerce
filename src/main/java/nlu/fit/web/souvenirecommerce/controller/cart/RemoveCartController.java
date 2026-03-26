@@ -42,7 +42,8 @@ public class RemoveCartController extends HttpServlet {
                         isAjax,
                         true,
                         cart.totalQuantity(),
-                        cart.total());
+                        cart.total()
+                );
             } else {
                 handleResponse(response, isAjax, false, cart.totalQuantity(), cart.total());
             }
@@ -59,23 +60,25 @@ public class RemoveCartController extends HttpServlet {
         doPost(request, response);
     }
 
+    /* ================== HELPER ================== */
+
     private void handleResponse(HttpServletResponse response,
-            boolean isAjax,
-            boolean success,
-            int totalQty,
-            double total) throws IOException {
+                                boolean isAjax,
+                                boolean success,
+                                int totalQty,
+                                double total) throws IOException {
 
         if (isAjax) {
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
 
             String json = """
-                    {
-                      "success": %b,
-                      "totalQuantity": %d,
-                      "total": %.0f
-                    }
-                    """.formatted(success, totalQty, total);
+            {
+              "success": %b,
+              "totalQuantity": %d,
+              "total": %.0f
+            }
+            """.formatted(success, totalQty, total);
 
             response.getWriter().write(json);
         } else {

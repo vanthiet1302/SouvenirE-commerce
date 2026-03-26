@@ -1,13 +1,13 @@
 /* Base :
-1 . Moi truong
-2 . Font va type
-3 . color
+1 . Reset và normalize
+2 . Font và kiểu chữ
+3 . Biến màu
 4 . Layout
-5 . phan dung chung
+5 . Component dùng chung
  */
 
 
-/* Moi truong */
+/* ============ 1. RESET / NORMALIZE ============== */
 *,
 *::before,
 *::after {
@@ -50,7 +50,7 @@ ul, ol {
 }
 
 
-/* font va type */
+/* ============ 2 . Font và kiểu chữ ============== */
 h1, h2, h3, h4, h5, h6 {
     margin: 0;
     font-weight: 700;
@@ -76,40 +76,52 @@ p {
     font-size: 14px;
 }
 
-/* color */
+
+/* ============ 3 . Biến màu  ============== */
 :root {
+    /* ===== Background ===== */
     --bg-main: #F3F3F3;
     --bg-white: #ffffff;
     --bg-light: #f9f9f9;
 
+    /* ===== Text ===== */
     --text-main: #333333;
     --text-heading: #1b1b1b;
     --text-secondary: #444444;
     --text-muted: #888695;
 
+    /* ===== Primary / Accent ===== */
     --color-primary: #4b1283;
     --color-primary-dark: #250740;
     --color-accent: #f1c40f;
 
+    /* ===== Price / Sale ===== */
     --color-price: #000000;
     --color-sale: #EE4D2D;
 
+    /* ===== Border ===== */
     --border-light: #eeeeee;
     --border-normal: #e0e0e0;
 
+    /* ===== Shadow ===== */
     --shadow-sm: 0 3px 10px rgba(0,0,0,0.08);
     --shadow-md: 0 6px 18px rgba(0,0,0,0.12);
 
+    /* ===== Radius ===== */
     --radius-sm: 6px;
     --radius-md: 12px;
     --radius-lg: 20px;
 }
 
-/* Layout */
+
+/* ============ 4. LAYOUT CHUNG (CHUẨN HOÁ) ============== */
+
+/* SECTION: chịu trách nhiệm nền (CÓ THỂ TRÀN) */
 .section {
     width: 100%;
 }
 
+/* Container chuẩn cho toàn site (KHÔNG BAO GIỜ TRÀN) */
 .main-container {
     max-width: 1400px;
     margin: 0 auto;
@@ -118,11 +130,13 @@ p {
     width: 100%;
 }
 
+/* Section spacing */
 .section-spacing {
     padding-top: 40px;
     padding-bottom: 40px;
 }
 
+/* Divider dùng chung */
 .divider {
     width: 100%;
     height: 1px;
@@ -131,7 +145,10 @@ p {
     margin: 20px 0;
 }
 
-/* phan dung chung : gom product card va button */
+
+/* ============ 5 . COMPONENT DÙNG CHUNG ============== */
+
+/* ================= PRODUCT CARD (HOME + PRODUCT TYPE) ================= */
 .product-card {
     background: var(--bg-white);
     border-radius: var(--radius-md);
@@ -152,6 +169,7 @@ p {
     transform: translateY(-4px);
 }
 
+/* Image */
 .product-card .img-box {
     width: 100%;
     height: 240px;
@@ -167,6 +185,7 @@ p {
     object-fit: cover;
 }
 
+/* Sale badge */
 .product-card .badge-sale {
     position: absolute;
     top: 0;
@@ -179,6 +198,7 @@ p {
     border-bottom-right-radius: 4px;
 }
 
+/* Product name */
 .product-card .product-name {
     font-size: 16px;
     font-weight: 500;
@@ -191,6 +211,7 @@ p {
     -webkit-box-orient: vertical;
 }
 
+/* Price */
 .product-card .price-container {
     display: flex;
     align-items: center;
@@ -219,6 +240,7 @@ p {
     border-radius: 4px;
 }
 
+/* Sold & Rating */
 .product-card .product-sold {
     display: flex;
     justify-content: space-between;
@@ -240,7 +262,7 @@ p {
 }
 
 
-/* Button  */
+/* ================= BUTTON ================= */
 .btn {
     display: inline-block;
     padding: 10px 28px;
@@ -268,4 +290,19 @@ p {
 
 .btn-outline:hover {
     background: #f1f1f1;
+}
+
+
+/* ============ 6 . RESPONSIVE ============== */
+@media (max-width: 992px) {
+    .main-container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .product-card .img-box {
+        height: 200px;
+    }
 }
