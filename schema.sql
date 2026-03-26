@@ -4,6 +4,29 @@
 -- ------------------------------------------------------
 -- Server version	8.0.45
 
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE `users` (
+                         `id` char(36) NOT NULL,
+                         `username` varchar(50) NOT NULL,
+                         `last_name` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+                         `first_name` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+                         `email` varchar(50) NOT NULL,
+                         `date_of_birth` date NOT NULL,
+                         `avatar_url` varchar(255) DEFAULT NULL,
+                         `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                         `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                         `gender` enum('MALE','FEMALE','OTHER') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+                         PRIMARY KEY (`id`),
+                         UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+DROP TABLE IF EXISTS `roles`;
+CREATE TABLE `roles` (
+                         `id` int NOT NULL AUTO_INCREMENT,
+                         `name` varchar(255) NOT NULL,
+                         PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 DROP TABLE IF EXISTS `auth_providers`;
 CREATE TABLE `auth_providers` (
                                   `id` int NOT NULL AUTO_INCREMENT,
@@ -11,6 +34,8 @@ CREATE TABLE `auth_providers` (
                                   PRIMARY KEY (`id`),
                                   UNIQUE KEY `provider_name` (`provider_name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
 
 DROP TABLE IF EXISTS `permissions`;
 CREATE TABLE `permissions` (
@@ -47,12 +72,7 @@ CREATE TABLE `role_users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
-DROP TABLE IF EXISTS `roles`;
-CREATE TABLE `roles` (
-                         `id` int NOT NULL AUTO_INCREMENT,
-                         `name` varchar(255) NOT NULL,
-                         PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 
 DROP TABLE IF EXISTS `user_authentications`;
 CREATE TABLE `user_authentications` (
@@ -67,18 +87,4 @@ CREATE TABLE `user_authentications` (
                                         CONSTRAINT `user_authentications_ibfk_2` FOREIGN KEY (`provider_id`) REFERENCES `auth_providers` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE `users` (
-                         `id` char(36) NOT NULL,
-                         `username` varchar(50) NOT NULL,
-                         `last_name` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
-                         `first_name` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
-                         `email` varchar(50) NOT NULL,
-                         `date_of_birth` date NOT NULL,
-                         `avatar_url` varchar(255) DEFAULT NULL,
-                         `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-                         `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-                         `gender` enum('MALE','FEMALE','OTHER') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-                         PRIMARY KEY (`id`),
-                         UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+

@@ -20,7 +20,7 @@
 
                 <div class="icon-row">
                     <div class="icon-box">
-                        <img src="${pageContext.request.contextPath}/assets/images/Payment/visa.jpg" alt="Visa">
+                        <img src="${pageContext.request.contextPath}/assets/image/payment/visa.jpg" alt="Visa">
                     </div>
                     <div class="icon-box">
                         <img src="${pageContext.request.contextPath}/assets/images/Payment/mastercard.png"
