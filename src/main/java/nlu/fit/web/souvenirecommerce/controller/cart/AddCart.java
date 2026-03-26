@@ -24,7 +24,6 @@ public class AddCart extends HttpServlet {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("userInSession");
 
-        // ===== CHƯA LOGIN =====
         if (user == null) {
             if ("XMLHttpRequest".equals(request.getHeader("X-Requested-With"))) {
                 response.setContentType("application/json");
@@ -44,7 +43,6 @@ public class AddCart extends HttpServlet {
             return;
         }
 
-        // ===== PARAM =====
         int productId;
         int quantity;
 
@@ -62,20 +60,17 @@ public class AddCart extends HttpServlet {
             return;
         }
 
-        // ===== CART =====
         Cart cart = (Cart) session.getAttribute("cart");
         if (cart == null) cart = new Cart();
 
         cart.addItem(product, quantity);
         session.setAttribute("cart", cart);
 
-        // ===== BUY NOW =====
         if ("true".equals(request.getParameter("buyNow"))) {
             response.sendRedirect(request.getContextPath() + "/checkout");
             return;
         }
 
-        // ===== AJAX =====
         if ("XMLHttpRequest".equals(request.getHeader("X-Requested-With"))) {
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
@@ -89,7 +84,6 @@ public class AddCart extends HttpServlet {
             return;
         }
 
-        // ===== FORM =====
         response.sendRedirect(request.getHeader("Referer"));
     }
 

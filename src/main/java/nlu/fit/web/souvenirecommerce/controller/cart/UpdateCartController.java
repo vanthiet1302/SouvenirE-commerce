@@ -31,7 +31,6 @@ public class UpdateCartController extends HttpServlet {
                 return;
             }
 
-            // Update hoặc remove
             if (quantity <= 0) {
                 cart.removeItem(productId);
             } else {
@@ -40,11 +39,9 @@ public class UpdateCartController extends HttpServlet {
             
             session.setAttribute("cart", cart);
 
-            // Lấy subtotal của item (nếu còn)
             CartItem item = cart.getItem(productId);
             double itemSubtotal = (item != null) ? item.getSubTotal() : 0;
 
-            // Trả JSON cho realtime UI
             String json = """
             {
               "success": true,

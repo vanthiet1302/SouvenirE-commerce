@@ -52,7 +52,6 @@ public class ChangePassController extends HttpServlet {
         String newPassword = request.getParameter("newPassword");
         String confirmPassword = request.getParameter("confirmPassword");
 
-        // ===== VALIDATE =====
         if (!userDAO.checkPassword(user.getId(), currentPassword)) {
             request.setAttribute("error", "Mật khẩu hiện tại không đúng");
         } else if (!newPassword.equals(confirmPassword)) {

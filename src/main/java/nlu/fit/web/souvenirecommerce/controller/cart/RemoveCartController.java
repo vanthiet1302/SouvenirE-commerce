@@ -60,7 +60,6 @@ public class RemoveCartController extends HttpServlet {
         doPost(request, response);
     }
 
-    /* ================== HELPER ================== */
 
     private void handleResponse(HttpServletResponse response,
                                 boolean isAjax,
