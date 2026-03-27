@@ -6,7 +6,6 @@
     <div class="product-card">
         <a href="${pageContext.request.contextPath}/product?id=${p.id}">
 
-            <!-- IMAGE -->
             <div class="img-box">
                 <img src="${pageContext.request.contextPath}${p.image}" alt="${p.name}"/>
 
@@ -15,10 +14,8 @@
                 </c:if>
             </div>
 
-            <!-- NAME -->
             <p class="product-name">${p.name}</p>
 
-            <!-- PRICE -->
             <div class="price-container">
                 <c:choose>
                     <c:when test="${p.discountPercent != null}">
@@ -38,7 +35,6 @@
                 </c:choose>
             </div>
 
-            <!-- SOLD & RATING -->
             <div class="product-sold">
                 Đã bán ${p.totalSold}
                 <span class="rating">
