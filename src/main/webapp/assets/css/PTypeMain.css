@@ -1,15 +1,14 @@
-/* ================= LAYOUT TỔNG ================= */
+/* Layout tổng */
 .product-type-layout {
     display: flex;
     gap: 32px;
     margin-top: 30px;
 }
 
-/* ================= SIDEBAR FILTER ================= */
+/* Sidebar filter */
 .filter-sidebar {
     width: 260px;
     flex-shrink: 0;
-
     background: transparent;
     border: none;
     border-radius: 0;
@@ -20,23 +19,22 @@
     font-size: 26px;
     font-weight: 800;
     letter-spacing: 0.5px;
-
     margin-bottom: 24px;
     padding-bottom: 12px;
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid var(--text-heading);
 }
 
-/* ================= FILTER GROUP ================= */
+/* Filter group */
 .filter-group {
     padding: 18px 0;
     margin: 0;
     border-bottom: 1px solid var(--border-light);
 }
+
 .filter-group:last-of-type {
     border-bottom: none;
 }
 
-/* Label của từng group */
 .filter-group label {
     display: block;
     font-size: 15px;
@@ -44,49 +42,24 @@
     margin-bottom: 10px;
 }
 
-/* Input / Select */
+/* Input / select (extend component) */
 .filter-group input,
 .filter-group select {
     width: 100%;
-    padding: 9px 10px;
-    border-radius: 6px;
-    border: 1px solid var(--border-normal);
-    font-size: 14px;
-    background: #fff;
 }
 
-.filter-group select {
-    cursor: pointer;
-}
-
-/* ================= SUBMIT BUTTON ================= */
+/* Button */
 .filter-sidebar button {
     width: 100%;
     margin-top: 26px;
-    padding: 12px 0;
-
-    background: #000;
-    color: #fff;
-    border-radius: 999px;
-
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-
-    transition: 0.25s;
 }
 
-.filter-sidebar button:hover {
-    background: #333;
-    transform: scale(1.03);
-}
-
-/* ================= MAIN CONTENT ================= */
+/* Main content */
 .product-type-content {
     flex: 1;
 }
 
-/* ================= CATEGORY BANNER ================= */
+/* Category banner */
 .category-banner {
     margin-bottom: 22px;
 }
@@ -98,7 +71,7 @@
     border-radius: var(--radius-md);
 }
 
-/* ================= HEADER (TITLE + COUNT) ================= */
+/* Header */
 .category-header {
     display: flex;
     justify-content: space-between;
@@ -109,6 +82,7 @@
 .category-header h2 {
     font-size: 24px;
     font-weight: 700;
+    color: var(--text-heading);
 }
 
 .category-header span {
@@ -116,19 +90,19 @@
     color: var(--text-muted);
 }
 
-/* ================= PRODUCT LIST ================= */
+/* Product list */
 .product-type-content .product-list {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
 }
 
-/* Card width riêng cho ProductType */
+/* Override width riêng */
 .product-type-content .product-card {
     width: calc(25% - 15px);
 }
 
-/* ================= EMPTY STATE ================= */
+/* Empty state */
 .empty-state {
     width: 100%;
     text-align: center;
@@ -137,36 +111,12 @@
     color: var(--text-muted);
 }
 
-/* ================= PAGINATION ================= */
-.pagination {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
+/* Pagination (extend component) */
+.product-pagination {
     margin: 40px 0;
 }
 
-.pagination a {
-    min-width: 34px;
-    height: 34px;
-    line-height: 34px;
-    text-align: center;
-    border-radius: 6px;
-    border: 1px solid var(--border-normal);
-    font-size: 14px;
-    transition: 0.25s;
-}
-
-.pagination a:hover {
-    background: #f1f1f1;
-}
-
-.pagination a.active {
-    background: #000;
-    color: #fff;
-    border-color: #000;
-}
-
-/* ================= RESPONSIVE ================= */
+/* Responsive */
 @media (max-width: 1200px) {
     .product-type-content .product-card {
         width: calc(33.333% - 14px);
