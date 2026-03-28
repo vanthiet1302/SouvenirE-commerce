@@ -7,7 +7,7 @@
         <a href="${pageContext.request.contextPath}/product?id=${p.id}">
 
             <div class="img-box">
-                <img src="${pageContext.request.contextPath}${p.image}" alt="${p.name}"/>
+                <img src="${p.image}" alt="${p.name}"/>
 
                 <c:if test="${p.discountPercent != null}">
                     <span class="badge-sale">-${p.discountPercent}%</span>
