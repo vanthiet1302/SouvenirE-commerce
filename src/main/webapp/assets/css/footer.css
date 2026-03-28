@@ -7,8 +7,8 @@
     margin-left: -50vw;
     margin-right: -50vw;
 
-    background-color: #ffffff;
-    border-top: 1px solid #e0e0e0;
+    background-color: var(--bg-white);
+    border-top: 1px solid var(--border-normal);
     padding: 40px 0;
 }
 
@@ -44,14 +44,14 @@
     font-size: 16px;
     font-weight: 700;
     margin-bottom: 12px;
-    color: #000;
+    color: var(--text-heading);
 }
 
 /* ===================== LINK & TEXT ===================== */
 .footer-col a,
 .footer-col p {
     font-size: 14px;
-    color: #BBB9B6;
+    color: var(--text-muted);
     line-height: 1.7;
 }
 
@@ -63,7 +63,7 @@
 }
 
 .footer-col a:hover {
-    color: #000;
+    color: var(--color-price);
 }
 
 /* ================= ICON PAYMENT / SHIPPING ================= */
@@ -79,8 +79,8 @@
     width: 48px;
     height: 48px;
     border-radius: 8px;
-    background: #f5f5f5;
-    border: 1px solid #e0e0e0;
+    background: var(--bg-light);
+    border: 1px solid var(--border-normal);
     padding: 6px;
 
     display: flex;
@@ -98,8 +98,8 @@
 
 .icon-box:hover {
     transform: scale(1.07);
-    background: #fff;
-    border-color: #ccc;
+    background: var(--bg-white);
+    border-color: var(--border-normal);
 }
 
 /* ================= SOCIAL ICONS ================= */
@@ -140,21 +140,21 @@
     flex: 1;
     padding: 10px;
     border-radius: 6px 0 0 6px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--border-normal);
+    background: var(--bg-white);
+    color: var(--text-main);;
     outline: none;
-    background: #fff;
-    color: #000;
 }
 
 .subscribe-box input::placeholder {
-    color: #BBB9B6;
+    color: var(--text-muted);
 }
 
 .subscribe-box button {
     padding: 10px 16px;
     border: none;
-    background: #000;
-    color: #fff;
+    background: var(--text-heading);
+    color: var(--bg-white);
     border-radius: 0 6px 6px 0;
     cursor: pointer;
 
@@ -163,7 +163,7 @@
 }
 
 .subscribe-box button:hover {
-    background: #333;
+    background: var(--text-secondary);
 }
 
 /* ================= FOOTER BOTTOM ================= */
@@ -172,7 +172,7 @@
 }
 
 .footer-bottom p {
-    color: #BBB9B6;
+    color: var(--text-muted);
     font-size: 15px;
     line-height: 25px;
 }
