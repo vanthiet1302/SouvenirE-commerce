@@ -12,7 +12,6 @@ import java.util.List;
 
 public class BannerDAO {
 
-    // 1. Lấy danh sách tất cả Banner
     public List<Banner> getAll() {
         List<Banner> list = new ArrayList<>();
         String sql = "SELECT * FROM banner ORDER BY position ASC";
@@ -37,7 +36,6 @@ public class BannerDAO {
         return list;
     }
 
-    // 2. Lấy Banner theo ID
     public Banner getById(int id) {
         String sql = "SELECT * FROM banner WHERE id = ?";
         try (Connection conn = new DBContext().getConnection();
@@ -61,7 +59,6 @@ public class BannerDAO {
         return null;
     }
 
-    // 3. Thêm mới Banner
     public boolean insert(Banner b) {
         String sql = "INSERT INTO banner (image_url, title, position, status) VALUES (?, ?, ?, ?)";
         try (Connection conn = new DBContext().getConnection();
@@ -79,7 +76,6 @@ public class BannerDAO {
         return false;
     }
 
-    // 4. Cập nhật Banner
     public boolean update(Banner b) {
         String sql = "UPDATE banner SET image_url=?, title=?, position=?, status=? WHERE id=?";
         try (Connection conn = new DBContext().getConnection();
@@ -98,7 +94,6 @@ public class BannerDAO {
         return false;
     }
 
-    // 5. Xóa Banner
     public boolean delete(int id) {
         String sql = "DELETE FROM banner WHERE id=?";
         try (Connection conn = new DBContext().getConnection();

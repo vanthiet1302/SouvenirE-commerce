@@ -69,7 +69,6 @@
                 </span>
             </div>
 
-            <%-- Nút đăng ký đã được thêm chữ Tiếng Việt --%>
             <button type="submit" class="signup_button">ĐĂNG KÝ</button>
         </form>
     </div>

@@ -83,8 +83,6 @@ public class ProductDAO {
         
     """;
 
-    /* ================= HOME PAGE ================= */
-
     public List<Product> getBestSellingProducts(int limit) {
         String sql = BASE_SELECT + " ORDER BY p.total_sold DESC LIMIT ?";
         return getProductsByLimit(sql, limit);
@@ -128,8 +126,6 @@ public class ProductDAO {
 
         return list;
     }
-
-    /* ================= PRODUCT TYPE ================= */
 
     public List<Product> getProductsByCategoryWithFilter(
             int categoryId,
@@ -233,8 +229,6 @@ public class ProductDAO {
         return 0;
     }
 
-    /* ================= PRODUCT DETAIL ================= */
-
     public Product getProductById(int id) {
         String sql = """
             SELECT * FROM (
@@ -289,10 +283,6 @@ public class ProductDAO {
 
         return list;
     }
-
-
-
-    /* ================= COMMON ================= */
 
     private List<Product> getProductsByLimit(String sql, int limit) {
         List<Product> list = new ArrayList<>();
@@ -349,6 +339,7 @@ public class ProductDAO {
         }
         return list;
     }
+
     private Product mapProduct(ResultSet rs) throws Exception {
         Product p = new Product(
                 rs.getInt("id"),
@@ -371,8 +362,6 @@ public class ProductDAO {
 
         return p;
     }
-
-    /* ================= ADMIN METHODS ================= */
 
     public int getTotalProducts() {
         String sql = "SELECT COUNT(*) as total FROM products";
@@ -496,7 +485,6 @@ public class ProductDAO {
         return false;
     }
 
-    /* ================= SEARCH ================= */
     public List<Product> searchProducts(String keyword) {
 
         List<Product> list = new ArrayList<>();

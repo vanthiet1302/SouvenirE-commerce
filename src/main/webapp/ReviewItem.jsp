@@ -10,12 +10,10 @@
 <c:forEach var="r" items="${reviews}">
     <div class="review-item">
 
-        <!-- AVATAR -->
         <div class="review-avatar">
                 ${fn:substring(r.userName, 0, 1)}
         </div>
 
-        <!-- BODY -->
         <div class="review-body">
 
             <div class="review-header">

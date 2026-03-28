@@ -7,9 +7,6 @@ public class Banner {
     private int position;
     private boolean status;
 
-    // getter & setter
-
-
     public Banner(int id, String imageUrl, String title, int position, boolean status) {
         this.id = id;
         this.imageUrl = imageUrl;

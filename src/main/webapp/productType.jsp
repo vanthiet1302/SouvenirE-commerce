@@ -7,7 +7,6 @@
 
         <div class="product-type-layout">
 
-            <!-- ================= LEFT FILTER ================= -->
             <aside class="filter-sidebar">
                 <h3>Bộ lọc</h3>
 
@@ -49,20 +48,18 @@
                 </form>
             </aside>
 
-            <!-- ================= RIGHT CONTENT ================= -->
             <main class="product-type-content">
 
                 <div class="category-banner">
                     <img src="${pageContext.request.contextPath}/assets/images/Banner/${data.category.image}"
-                         alt="${data.category.name}">
+                         alt="${data.category.category_name}">
                 </div>
 
                 <div class="category-header">
-                    <h2>${data.category.name}</h2>
+                    <h2>${data.category.category_name}</h2>
                     <span>${data.totalProducts} sản phẩm</span>
                 </div>
 
-                <!-- ================= PRODUCT LIST ================= -->
                 <section class="product-section">
                     <div class="product-list">
 
@@ -78,7 +75,6 @@
                     </div>
                 </section>
 
-                <!-- ================= PAGINATION ================= -->
                 <div class="pagination">
                     <c:forEach begin="1" end="${data.totalPages}" var="i">
                         <a href="${pageContext.request.contextPath}/category?id=${data.category.id}&page=${i}&minPrice=${data.minPrice}&maxPrice=${data.maxPrice}&rating=${data.rating}&sort=${data.sortParam}"
