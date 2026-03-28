@@ -166,14 +166,12 @@ p {
     transform: translateY(-6px);
 }
 
-/* REMOVE LINK STYLE */
 .product-card a {
     text-decoration: none;
     color: inherit;
     display: block;
 }
 
-/* IMAGE */
 .img-box {
     padding: 6px;
     position: relative;
@@ -243,7 +241,6 @@ p {
     font-weight: bold;
 }
 
-/* PRICE STYLE */
 .old-price {
     text-decoration: line-through;
     opacity: 0.8;
