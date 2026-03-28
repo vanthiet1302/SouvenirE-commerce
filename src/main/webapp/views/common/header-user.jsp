@@ -3,7 +3,6 @@
 
 <div class="header-wrapper">
     <header class="header-container page-container">
-
         <div class="main-header">
 
             <!-- LEFT : LOGO -->
@@ -28,7 +27,6 @@
                     </c:if>
                 </a>
             </div>
-
         </div>
 
     </header>
