@@ -1,7 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<style> .center {
+<style>
+    .center {
     flex: 1;
     max-width: 600px;
     margin: 0 30px;
@@ -304,7 +305,7 @@
 
             <div class="logo">
                 <a href="${pageContext.request.contextPath}/home">
-                    <img src="${pageContext.request.contextPath}/assets/images/Logo/Logo-removebg-preview.png"
+                    <img src="${pageContext.request.contextPath}/assets/images/logo-inola.png"
                          style="height: 60px; width: auto; object-fit: contain";                       >
                 </a>
             </div>
