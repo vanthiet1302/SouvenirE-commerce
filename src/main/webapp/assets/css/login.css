@@ -1,4 +1,3 @@
-/* ===== RESET CƠ BẢN ===== */
 * {
     margin: 0;
     padding: 0;
@@ -12,7 +11,6 @@ body {
 
 }
 
-/* ===== HEADER ===== */
 .page_login {
     background-color: #fff;
     border-bottom: 1px solid #ddd;
@@ -22,7 +20,7 @@ body {
 
 .container {
     width: 80%;
-    max-width: 1200px; /* giới hạn tối đa */
+    max-width: 1200px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -53,7 +51,6 @@ body {
     background-color: #800080;
 }
 
-/* ===== LOGIN WRAPPER ===== */
 .pixfort_login_1 {
     display: flex;
     justify-content: space-between;
@@ -73,7 +70,6 @@ body {
     overflow: hidden;
 }
 
-/* ===== CỘT TRÁI ===== */
 .login_left {
     flex: 1;
     padding: 40px 50px;
@@ -98,7 +94,6 @@ body {
     border-radius: 50%;
 }
 
-/* ===== FORM ===== */
 .login_form {
     width: 100%;
 }
@@ -127,7 +122,6 @@ body {
     background: transparent;
 }
 
-/* ===== NÚT ===== */
 .btn_login,
 .btn_google,
 .btn_register {
@@ -161,7 +155,6 @@ body {
     background-color: #e0e0e0;
 }
 
-/* ===== LIÊN KẾT ===== */
 .forgot_pass {
     text-align: right;
     margin-bottom: 10px;
@@ -193,10 +186,9 @@ body {
     text-decoration: underline;
 }
 
-/* ===== CỘT PHẢI ===== */
 .login_right {
     flex: 1;
-    background-image: url("../../../Source/Image/Product/Cá nhân hóa/imgbut.jpg");
+    background-image: url("/assets/images/products/imgbut.jpg");
     display: flex;
     justify-content: center;
     align-items: center;

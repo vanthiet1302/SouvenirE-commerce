@@ -10,38 +10,10 @@
 
     <meta name="context-path" content="${pageContext.request.contextPath}">
 
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ShoppingCart.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/HomePageFooter.css">
+    <link rel="stylesheet" href="assets/css/ShoppingCart.css"/>
+    <link rel="stylesheet" href="assets/css/HomePageFooter.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
-
-    <style>
-        .checkout-btn {
-            display: block !important; /* Bắt buộc xuống dòng */
-            width: 100%;
-            margin-top: 30px !important; /* Tạo khoảng cách lớn với dòng tổng tiền */
-            padding: 15px 0;
-            text-align: center;
-
-            background-color: #4b368f;
-            color: #fff !important; /* Màu chữ trắng */
-            border-radius: 8px;
-            font-weight: 700;
-            text-transform: uppercase;
-            box-shadow: 0 4px 10px rgba(75, 54, 143, 0.3);
-            transition: all 0.3s;
-        }
-
-        .checkout-btn:hover {
-            background-color: #6a4c9c;
-            transform: translateY(-2px);
-            text-decoration: none;
-        }
-
-        /* Chỉnh lại khoảng cách cho phần tóm tắt */
-        .summary-card {
-            padding-bottom: 30px; /* Thêm khoảng trống dưới cùng của khung */
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/cart.css"/>
 </head>
 <body>
 
