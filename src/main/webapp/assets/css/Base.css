@@ -203,7 +203,14 @@ p {
     font-size: 16px;
     font-weight: bold;
     letter-spacing: 1px;
-    padding: 0 10px;
+    padding: 10px 16px 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: 20px;
 }
 
 .product-sold {
