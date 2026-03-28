@@ -18,6 +18,8 @@
         </c:choose>
     </title>
 
+    <link rel="icon" type="image/png" href="/assets/images/logo-inola.png">
+
     <link rel="stylesheet"
           href="${pageContext.request.contextPath}/assets/css/Base.css">
 
