@@ -3,31 +3,27 @@ package nlu.fit.web.souvenirecommerce.util;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
 
 public class DBContext {
 
-    private static final String SERVER_NAME = "localhost";
-    private static final String DB_NAME = "OldWebDb";
-    private static final String PORT_NUMBER = "3306";
-    private static final String USERNAME = "root";
-    private static final String PASSWORD = "keenetic";
-
-    private static final String URL =
-            "jdbc:mysql://" + SERVER_NAME + ":" + PORT_NUMBER + "/" + DB_NAME +
-                    "?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC";
-
     public static Connection getConnection() throws SQLException {
+        Properties props = ApplicationLoader.getProperties();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
             throw new RuntimeException("Không tìm thấy MySQL Driver", e);
         }
-        return DriverManager.getConnection(URL, USERNAME, PASSWORD);
+        return DriverManager.getConnection(
+                props.getProperty("db_url"),
+                props.getProperty("db_username"),
+                props.getProperty("db_password")
+        );
     }
 
     public static void main(String[] args) {
         try {
-            System.out.println(new DBContext().getConnection());
+            System.out.println(getConnection());
             System.out.println("Kết nối CSDL thành công!");
         } catch (Exception e) {
             System.out.println("Lỗi kết nối: " + e.getMessage());
