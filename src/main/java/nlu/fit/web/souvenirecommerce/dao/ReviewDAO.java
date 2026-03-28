@@ -14,7 +14,6 @@ import java.util.Map;
 
 public class ReviewDAO {
 
-    // Get reviews with filter + sort + paging
     public List<Review> getReviewsByProductWithFilter(
             int productId,
             Integer rating,
@@ -73,7 +72,6 @@ public class ReviewDAO {
         return list;
     }
 
-    // Review summary
     public ReviewSummary getReviewSummaryByProductId(int productId) {
         String sql = """
         SELECT COUNT(*) AS total_reviews,
@@ -132,8 +130,6 @@ public class ReviewDAO {
         }
     }
 
-
-    // Count reviews by rating
     public Map<Integer, Integer> countReviewsByRating(int productId) {
         Map<Integer, Integer> map = new HashMap<>();
         for (int i = 1; i <= 5; i++) map.put(i, 0);
@@ -161,7 +157,6 @@ public class ReviewDAO {
         return map;
     }
 
-    // Add review
     public boolean addReview(Review r) {
         String sql = """
             INSERT INTO reviews (product_id, user_id, rating, comment, created_at)

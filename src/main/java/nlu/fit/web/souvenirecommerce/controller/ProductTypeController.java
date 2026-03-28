@@ -66,7 +66,7 @@ public class    ProductTypeController extends HttpServlet {
         request.setAttribute("data", dto);
 
         /* ===== 6. LAYOUT CONFIG ===== */
-        request.setAttribute("pageTitle", dto.getCategory().getName());
+        request.setAttribute("pageTitle", dto.getCategory().getCategory_name());
         request.setAttribute("contentPage", "productType.jsp");
         request.setAttribute("pageCss", "PTypeMain.css");
         request.setAttribute("pageJs", "ProductType.js");

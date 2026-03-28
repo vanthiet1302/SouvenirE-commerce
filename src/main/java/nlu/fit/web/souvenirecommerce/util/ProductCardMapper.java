@@ -13,21 +13,18 @@ public class ProductCardMapper {
         dto.setId(p.getId());
         dto.setName(p.getName());
 
-        /* ================= IMAGE ================= */
         if (p.getImage() != null && !p.getImage().isBlank()) {
             dto.setImage(p.getImage());
         } else {
             dto.setImage("/assets/images/products/default.png");
         }
 
-        /* ================= BASE INFO ================= */
         dto.setTotalSold(p.getTotalSold());
         dto.setAvgRating(p.getAvgRating());
         dto.setReviewCount(p.getReviewCount());
 
-        double originalPrice = p.getPrice();
+        double originalPrice = p.getOriginalPrice();
 
-        /* ================= PROMOTION ================= */
         if (promo != null && promo.getDiscountPercent() > 0) {
 
             int percent = promo.getDiscountPercent();
@@ -37,11 +34,9 @@ public class ProductCardMapper {
             dto.setOriginalPrice(originalPrice);
             dto.setDiscountedPrice(salePrice);
 
-            // giá hiển thị chính
             dto.setPrice(salePrice);
 
         } else {
-            // Không có khuyến mãi
             dto.setDiscountPercent(null);
             dto.setDiscountedPrice(null);
             dto.setOriginalPrice(originalPrice);

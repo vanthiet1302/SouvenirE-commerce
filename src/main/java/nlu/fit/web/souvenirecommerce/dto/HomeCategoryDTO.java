@@ -10,8 +10,6 @@ public class HomeCategoryDTO {
     private Category category;
     private List<ProductCardDTO> productCards;
 
-    // ================= GETTER / SETTER =================
-
     public Category getCategory() {
         return category;
     }
@@ -28,7 +26,6 @@ public class HomeCategoryDTO {
         this.productCards = productCards;
     }
 
-    // ================= STATIC FACTORY =================
     public static List<HomeCategoryDTO> fromCategories(List<Category> categories) {
 
         List<HomeCategoryDTO> list = new ArrayList<>();

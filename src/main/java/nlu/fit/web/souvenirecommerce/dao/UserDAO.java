@@ -13,9 +13,6 @@ import java.util.List;
 
 public class UserDAO {
 
-    /* =========================
-       1. ĐĂNG NHẬP
-     ========================= */
     public User login(String loginDetail, String password) {
         String sql = "SELECT * FROM users WHERE (email = ? OR phone = ?) AND status = 'Active'";
 
@@ -44,9 +41,6 @@ public class UserDAO {
         return null;
     }
 
-    /* =========================
-       2. ĐĂNG KÝ
-     ========================= */
     public boolean register(String email, String password, String fullName, String phone) {
         String sql = "INSERT INTO users (full_name, email, password, phone, status, role, avatar) " +
                 "VALUES (?, ?, ?, ?, 'Active', 'User', 'default-avatar.png')";
@@ -66,9 +60,6 @@ public class UserDAO {
         return false;
     }
 
-    /* =========================
-       3. QUÊN MẬT KHẨU
-     ========================= */
     public boolean setResetCode(String accountInfo, String code) {
         String sql = "UPDATE users SET reset_token = ?, token_expiry = DATE_ADD(NOW(), INTERVAL 5 MINUTE) " +
                 "WHERE email = ? OR phone = ?";
@@ -123,9 +114,6 @@ public class UserDAO {
         return false;
     }
 
-    /* =========================
-       4. ĐỔI MẬT KHẨU
-     ========================= */
     public boolean checkPassword(int userId, String rawPassword) {
         String sql = "SELECT password FROM users WHERE id = ?";
 
@@ -158,9 +146,6 @@ public class UserDAO {
         return false;
     }
 
-    /* =========================
-       5. CẬP NHẬT PROFILE
-     ========================= */
     public boolean updateProfile(int userId, String fullName, String phone, String gender, String dob) {
         String sql = "UPDATE users SET full_name = ?, phone = ?, gender = ?, dob = ? WHERE id = ?";
 
@@ -180,11 +165,6 @@ public class UserDAO {
         return false;
     }
 
-    /* =========================
-       6. ĐỊA CHỈ
-     ========================= */
-
-    // THÊM ĐỊA CHỈ – nếu là địa chỉ đầu tiên thì set mặc định
     public boolean addAddress(int userId, String detail, String city, String district, String ward) {
 
         if (detail == null || detail.isBlank()) return false;
@@ -360,9 +340,6 @@ public class UserDAO {
         }
     }
 
-    /* =========================
-       ADMIN METHODS
-     ========================= */
     public int getTotalCustomers() {
         String sql = "SELECT COUNT(*) as total FROM users WHERE role = 'User'";
         try (Connection conn = DBContext.getConnection();

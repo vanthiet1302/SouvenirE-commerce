@@ -11,7 +11,6 @@ import java.util.List;
 
 public class CategoryDAO {
 
-    // Get all categories
     public List<Category> getAllCategories() {
         List<Category> list = new ArrayList<>();
         String sql = "SELECT id, category_name, image FROM categories ORDER BY id DESC";
@@ -163,7 +162,7 @@ public class CategoryDAO {
         try (Connection conn = DBContext.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
-            ps.setString(1, category.getName());
+            ps.setString(1, category.getCategory_name());
             ps.setString(2, category.getImage());
             return ps.executeUpdate() > 0;
         } catch (Exception e) {
@@ -178,7 +177,7 @@ public class CategoryDAO {
         try (Connection conn = DBContext.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
-            ps.setString(1, category.getName());
+            ps.setString(1, category.getCategory_name());
             ps.setString(2, category.getImage());
             ps.setInt(3, category.getId());
             return ps.executeUpdate() > 0;

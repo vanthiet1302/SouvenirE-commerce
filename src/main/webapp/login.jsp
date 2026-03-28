@@ -29,14 +29,12 @@
                     </div>
                 </c:if>
 
-                <%-- Hiển thị thông báo thành công từ request --%>
                 <c:if test="${not empty success}">
                     <div class="success-message" style="color: #52c41a; background: #f6ffed; border: 1px solid #b7eb8f; padding: 10px; border-radius: 4px; margin-bottom: 15px;">
                         <i class="fa fa-check-circle"></i> ${success}
                     </div>
                 </c:if>
 
-                <%-- Action trỏ về Servlet /login thay vì file vật lý --%>
                 <form class="login_form" action="${pageContext.request.contextPath}/login" method="post">
                     <div class="input_group">
                         <i class="fa fa-envelope"></i>
@@ -48,7 +46,6 @@
                     </div>
 
                     <div class="forgot_pass">
-                        <%-- Sửa link trỏ về Servlet ForgotPasswordController --%>
                         <a href="${pageContext.request.contextPath}/forgot-password">Quên mật khẩu?</a>
                     </div>
 
@@ -57,7 +54,6 @@
                     <button type="button" class="btn_google light_bg">
                         <i class="fa-brands fa-google"></i> Đăng ký với Google
                     </button>
-
 
                     <a href="${pageContext.request.contextPath}/signup" class="btn_register light_bg" style="text-decoration: none; display: block; text-align: center;">
                         <i class="fa fa-user-plus"></i> Đăng ký tài khoản mới

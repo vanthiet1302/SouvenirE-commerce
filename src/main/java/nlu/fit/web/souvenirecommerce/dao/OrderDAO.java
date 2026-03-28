@@ -211,7 +211,6 @@ public class OrderDAO {
     }
 
     public int getOrCreateOrderStatus(String description) {
-        // First try to get existing status
         String selectSql = "SELECT id FROM order_status WHERE description = ?";
         try (Connection conn = DBContext.getConnection();
              PreparedStatement ps = conn.prepareStatement(selectSql)) {
@@ -225,7 +224,6 @@ public class OrderDAO {
             e.printStackTrace();
         }
 
-        // If not found, create new status
         String insertSql = "INSERT INTO order_status (description) VALUES (?)";
         try (Connection conn = DBContext.getConnection();
              PreparedStatement ps = conn.prepareStatement(insertSql, PreparedStatement.RETURN_GENERATED_KEYS)) {
@@ -241,7 +239,7 @@ public class OrderDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return 1; // Default to status ID 1 if all else fails
+        return 1;
     }
 
     public int getOrderCountByStatus(String status) {
