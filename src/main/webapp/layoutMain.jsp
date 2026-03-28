@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="utf-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 
 <!DOCTYPE html>
@@ -26,7 +26,7 @@
           href="${pageContext.request.contextPath}/assets/css/Base.css">
 
     <link rel="stylesheet"
-          href="${pageContext.request.contextPath}/assets/css/header.css">
+          href="${pageContext.request.contextPath}/assets/css/header-renew.css">
     <link rel="stylesheet"
           href="${pageContext.request.contextPath}/assets/css/footer.css">
 
@@ -41,7 +41,7 @@
 
 <body>
 
-<jsp:include page="/views/common/header.jsp"/>
+<jsp:include page="/views/common/header-renew.jsp"/>
 
 <main id="main-content">
     <jsp:include page="${contentPage}"/>
