@@ -1,59 +1,39 @@
-/* ===== RESET CƠ BẢN ===== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Helvetica Neue", Arial, sans-serif;
-}
-
-body {
-    background-color: #f8f9fa;
-    color: #333;
-
-}
-
-/* ===== HEADER ===== */
+/* Header */
 .page_login {
-    background-color: #fff;
-    border-bottom: 1px solid #ddd;
+    background-color: var(--bg-white);
+    border-bottom: 1px solid var(--border-normal);
     padding: 15px 0;
-
 }
 
+/* Container */
 .container {
     width: 80%;
-    max-width: 1200px; /* giới hạn tối đa */
+    max-width: 1200px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-
 }
-
 
 .logo_inola {
     height: 40px;
 }
 
+/* Button link */
 .pix_button {
     display: inline-block;
-    text-decoration: none;
     padding: 8px 15px;
-    border-radius: 6px;
+    border-radius: var(--radius-sm);
     font-weight: 600;
     font-size: 14px;
 }
 
 .purple_bg {
-    background-color: #800080;
-    color: #fff;
+    background-color: var(--color-primary);
+    color: var(--bg-white);
 }
 
-.purple_bg:hover {
-    background-color: #800080;
-}
-
-/* ===== LOGIN WRAPPER ===== */
+/* Wrapper */
 .pixfort_login_1 {
     display: flex;
     justify-content: space-between;
@@ -66,14 +46,13 @@ body {
     display: flex;
     width: 100%;
     max-width: 900px;
-    background: #fff;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    border-radius: 10px;
-
+    background: var(--bg-white);
+    box-shadow: var(--shadow-md);
+    border-radius: var(--radius-md);
     overflow: hidden;
 }
 
-/* ===== CỘT TRÁI ===== */
+/* Left */
 .login_left {
     flex: 1;
     padding: 40px 50px;
@@ -82,7 +61,7 @@ body {
 .login_title {
     font-size: 28px;
     font-weight: 700;
-    color:#800080;
+    color: var(--color-primary);
     margin-bottom: 20px;
     text-align: center;
 }
@@ -98,36 +77,35 @@ body {
     border-radius: 50%;
 }
 
-/* ===== FORM ===== */
+/* Form */
 .login_form {
     width: 100%;
 }
 
+/* Input group */
 .input_group {
     display: flex;
     align-items: center;
-    border: 1px solid #ddd;
-    border-radius: 6px;
+    border: 1px solid var(--border-normal);
+    border-radius: var(--radius-sm);
     padding: 10px 12px;
     margin-bottom: 15px;
-    background: #fafafa;
+    background: var(--bg-light);
 }
 
 .input_group i {
-    color: #800080;
+    color: var(--color-primary);
     margin-right: 10px;
-    font-size: 16px;
 }
 
 .input_group input {
     border: none;
     outline: none;
     width: 100%;
-    font-size: 15px;
     background: transparent;
 }
 
-/* ===== NÚT ===== */
+/* Button */
 .btn_login,
 .btn_google,
 .btn_register {
@@ -136,67 +114,53 @@ body {
     text-align: center;
     padding: 10px;
     margin-bottom: 10px;
-    border: none;
-    border-radius: 6px;
+    border-radius: var(--radius-sm);
     cursor: pointer;
     font-weight: 600;
-    transition: 0.3s;
 }
 
+/* Primary */
 .btn_login {
-    background-color: #800080;
-    color: #fff;
+    background-color: var(--color-primary);
+    color: var(--bg-white);
 }
 
-.btn_login:hover {
-    background-color: #800080;
-}
-
+/* Outline */
 .light_bg {
-    background-color: #f0f0f0;
-    color: #333;
+    background-color: var(--bg-light);
+    color: var(--text-main);
 }
 
 .light_bg:hover {
-    background-color: #e0e0e0;
+    background-color: var(--border-light);
 }
 
-/* ===== LIÊN KẾT ===== */
+/* Links */
 .forgot_pass {
     text-align: right;
     margin-bottom: 10px;
 }
 
 .forgot_pass a {
-    color:#800080;
-    text-decoration: none;
+    color: var(--color-primary);
     font-size: 14px;
-}
-
-.forgot_pass a:hover {
-    text-decoration: underline;
 }
 
 .terms_text {
     font-size: 13px;
-    color: #666;
+    color: var(--text-muted);
     text-align: center;
     margin-top: 15px;
 }
 
 .terms_text a {
-    color: #800080;
-    text-decoration: none;
+    color: var(--color-primary);
 }
 
-.terms_text a:hover {
-    text-decoration: underline;
-}
-
-/* ===== CỘT PHẢI ===== */
+/* Right */
 .login_right {
     flex: 1;
-    background-image: url("../../../Source/Image/Product/Cá nhân hóa/imgbut.jpg");
+    /*background-image: url("../../../Source/Image/Product/Cá nhân hóa/imgbut.jpg");*/
     display: flex;
     justify-content: center;
     align-items: center;
@@ -205,6 +169,4 @@ body {
 
 .login_right img {
     width: 200px;
-    height: auto;
 }
-
