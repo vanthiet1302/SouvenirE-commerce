@@ -7,13 +7,11 @@
 
 <main class="product-page">
 
-    <!-- ================= PRODUCT TOP ================= -->
     <section class="section">
         <div class="main-container">
 
             <div class="product-top">
 
-                <!-- LEFT -->
                 <div class="product-left-wrapper">
                     <div class="product-gallery">
                         <img src="${data.product.image}" alt="${data.product.name}">
@@ -46,7 +44,7 @@
                         <c:choose>
                             <c:when test="${data.promotion != null}">
                                 <span class="old-price">
-                                    <fmt:formatNumber value="${data.product.price}"/> ₫
+                                    <fmt:formatNumber value="${data.product.originalPrice}"/> ₫
                                 </span>
                                 <span class="sale-price">
                                     <fmt:formatNumber value="${data.discountedPrice}"/> ₫
@@ -57,7 +55,7 @@
                             </c:when>
                             <c:otherwise>
                                 <span class="normal-price">
-                                    <fmt:formatNumber value="${data.product.price}"/> ₫
+                                    <fmt:formatNumber value="${data.product.originalPrice}"/> ₫
                                 </span>
                             </c:otherwise>
                         </c:choose>
@@ -66,7 +64,6 @@
                     <p class="short-description">
                         ${data.product.shortDescription}
                     </p>
-
 
                     <form action="${pageContext.request.contextPath}/cart/add"
                           method="post"
@@ -108,7 +105,6 @@
 
     <div class="divider"></div>
 
-    <!-- ================= PRODUCT INFO ================= -->
     <section class="section product-info-section">
         <div class="main-container">
 
@@ -140,7 +136,6 @@
 
     <div class="divider"></div>
 
-    <!-- ================= REVIEWS ================= -->
     <section class="section product-reviews">
         <div class="main-container">
 
@@ -148,7 +143,6 @@
 
             <div class="review-content-wrap">
 
-                <!-- LEFT -->
                 <div class="review-mleft">
                     <div class="review-summary-block">
                         <p class="average-rating">${data.avgRating}</p>
@@ -181,7 +175,6 @@
                     </button>
                 </div>
 
-                <!-- RIGHT -->
                 <div class="review-mright">
 
                     <div class="review-filter-bar">
@@ -210,7 +203,6 @@
 
 </main>
 
-<!-- ================= RELATED PRODUCTS ================= -->
 <section class="section related-products">
     <div class="main-container">
 
@@ -225,7 +217,6 @@
     </div>
 </section>
 
-<!-- ================= IMAGE ZOOM MODAL ================= -->
 <div class="image-modal" id="imageModal">
     <div class="modal-overlay"></div>
     <div class="modal-content">
@@ -234,7 +225,6 @@
     </div>
 </div>
 
-<!-- ================= REVIEW MODAL ================= -->
 <div class="review-modal" id="reviewModal" >
     <div class="review-overlay"></div>
 
