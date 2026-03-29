@@ -1,20 +1,17 @@
-/* ================= SEARCH AUTOCOMPLETE ================= */
-
+/* Search autocomplete */
 .search-wrapper {
     position: relative;
 }
 
-/* Dropdown – render ở BODY */
+/* Dropdown */
 .search-suggestions {
-    position: fixed; /* QUAN TRỌNG */
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-
+    position: fixed;
+    background: var(--bg-white);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
     max-height: 420px;
     overflow-y: auto;
-
-    z-index: 2147483647; /* CAO NHẤT – KHÔNG BỊ ĐÈ */
+    z-index: 2147483647;
     animation: slideDown 0.2s ease-out;
 }
 
@@ -29,17 +26,14 @@
     align-items: center;
     gap: 12px;
     padding: 10px 14px;
-
-    text-decoration: none;
-    color: #333;
+    color: var(--text-main);
     cursor: pointer;
-
     transition: background-color 0.2s;
 }
 
 .suggestion-item:hover,
 .suggestion-item.selected {
-    background-color: #f5f5f5;
+    background-color: var(--bg-light);
 }
 
 /* Image */
@@ -47,8 +41,8 @@
     width: 48px;
     height: 48px;
     object-fit: cover;
-    border-radius: 6px;
-    border: 1px solid #eee;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-light);
     flex-shrink: 0;
 }
 
@@ -68,7 +62,7 @@
 
 .suggestion-price {
     font-size: 13px;
-    color: #EE4D2D;
+    color: var(--color-sale);
     font-weight: 600;
 }
 
@@ -76,12 +70,14 @@
 .search-suggestions::-webkit-scrollbar {
     width: 6px;
 }
+
 .search-suggestions::-webkit-scrollbar-thumb {
-    background: #aaa;
+    background: var(--text-muted);
     border-radius: 3px;
 }
+
 .search-suggestions::-webkit-scrollbar-thumb:hover {
-    background: #777;
+    background: var(--text-secondary);
 }
 
 /* Animation */
@@ -96,7 +92,7 @@
     }
 }
 
-/* ================= MOBILE ================= */
+/* Mobile */
 @media (max-width: 768px) {
     .search-suggestions {
         max-height: 300px;
@@ -106,6 +102,7 @@
         width: 40px;
         height: 40px;
     }
+
     .main-header {
         align-items: flex-start !important;
     }
@@ -119,5 +116,4 @@
     .main-header {
         overflow: visible !important;
     }
-
 }
