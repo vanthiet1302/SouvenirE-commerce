@@ -34,7 +34,7 @@ public class AdminCategoryController extends HttpServlet {
         try {
             if ("add".equals(action)) {
                 Category category = new Category();
-                category.setName(req.getParameter("name"));
+                category.setCategory_name(req.getParameter("name"));
                 category.setImage(req.getParameter("imageUrl"));
 
                 if (categoryDAO.insertCategory(category)) {
@@ -48,7 +48,7 @@ public class AdminCategoryController extends HttpServlet {
             } else if ("edit".equals(action)) {
                 Category category = new Category();
                 category.setId(Integer.parseInt(req.getParameter("id")));
-                category.setName(req.getParameter("name"));
+                category.setCategory_name(req.getParameter("name"));
                 category.setImage(req.getParameter("imageUrl"));
 
                 if (categoryDAO.updateCategory(category)) {

@@ -4,16 +4,11 @@ import java.util.List;
 
 public class HomePageDTO {
 
-    /* ===== CATEGORY SECTIONS ===== */
     private List<HomeCategoryDTO> bannerCategories;
     private List<HomeCategoryDTO> topCategorySections;
     private List<HomeCategoryDTO> extensionSections;
-
-    /* ===== PRODUCT CARD SECTIONS ===== */
     private List<ProductCardDTO> topRatedProductCards;
     private List<ProductCardDTO> newestProductCards;
-
-    // ================= GETTER / SETTER =================
 
     public List<HomeCategoryDTO> getBannerCategories() {
         return bannerCategories;

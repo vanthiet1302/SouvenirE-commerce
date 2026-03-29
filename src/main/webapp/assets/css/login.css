@@ -4,7 +4,18 @@
     border-bottom: 1px solid var(--border-normal);
     padding: 15px 0;
 }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+}
 
+body {
+    background-color: #f8f9fa;
+    color: #333;
+
+}
 /* Container */
 .container {
     width: 80%;
@@ -22,6 +33,7 @@
 /* Button link */
 .pix_button {
     display: inline-block;
+    text-decoration: none;
     padding: 8px 15px;
     border-radius: var(--radius-sm);
     font-weight: 600;
@@ -160,7 +172,7 @@
 /* Right */
 .login_right {
     flex: 1;
-    /*background-image: url("../../../Source/Image/Product/Cá nhân hóa/imgbut.jpg");*/
+    background-image: url("/assets/images/products/imgbut.jpg");
     display: flex;
     justify-content: center;
     align-items: center;
@@ -169,4 +181,6 @@
 
 .login_right img {
     width: 200px;
+    height: auto;
 }
+

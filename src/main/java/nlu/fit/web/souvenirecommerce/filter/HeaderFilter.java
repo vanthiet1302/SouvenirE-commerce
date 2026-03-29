@@ -28,20 +28,16 @@ public class HeaderFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpSession session = req.getSession(false);
 
-        /* ===== 1. AUTH USER ===== */
         if (session != null && session.getAttribute("authUser") != null) {
             request.setAttribute("authUser", session.getAttribute("authUser"));
         }
 
-        /* ===== 2. CATEGORIES (DROPDOWN) ===== */
         List<Category> categories = categoryDAO.getAllCategories();
         request.setAttribute("categories", categories);
 
-        /* ===== 3. TOP CATEGORIES (MENU BAR) ===== */
         List<Category> topCategories = categoryDAO.getTopSellingCategories(6);
         request.setAttribute("topCategories", topCategories);
 
-        /* ===== 4. CART COUNT (OPTIONAL – SAFE DEFAULT) ===== */
         if (session != null && session.getAttribute("cartItemCount") != null) {
             request.setAttribute("cartItemCount", session.getAttribute("cartItemCount"));
         } else {

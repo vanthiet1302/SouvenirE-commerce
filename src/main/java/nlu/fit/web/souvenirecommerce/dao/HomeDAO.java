@@ -10,13 +10,10 @@ public class HomeDAO {
     private final CategoryDAO categoryDAO = new CategoryDAO();
     private final ProductDAO productDAO = new ProductDAO();
 
-    /* ========= 1. BANNER ========= */
-    /* ========= 1. BANNER = TOP SELLING ========= */
     public List<Category> getBannerCategories(int limit) {
         return categoryDAO.getTopSellingCategories(limit);
     }
 
-    /* ========= 2. TOP CATEGORY + PRODUCT ========= */
     public List<Category> getTopCategoriesWithProducts(int categoryLimit, int productLimit) {
 
         List<Category> categories =
@@ -31,8 +28,6 @@ public class HomeDAO {
         return categories;
     }
 
-
-    /* ========= 3. EXTENSION = CATEGORY CÒN LẠI ========= */
     public List<Category> getExtensionCategories(int limit) {
         List<Integer> topIds = categoryDAO.getTopSellingCategoryIds(5);
         List<Category> remain = categoryDAO.getCategoriesNotIn(topIds);

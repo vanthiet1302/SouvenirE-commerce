@@ -19,22 +19,18 @@ public class ProductService {
     private final ReviewDAO reviewDAO = new ReviewDAO();
 
     public ProductDetailDTO getProductDetail(int productId) {
-
-        /* ================= PRODUCT ================= */
         Product product = productDAO.getProductById(productId);
         if (product == null) return null;
 
         Category category = categoryDAO.getCategoryById(product.getCategoryId());
         Promotion promotion = promotionDAO.getActivePromotionByProductId(productId);
 
-        /* ================= REVIEWS ================= */
         ReviewSummary summary = reviewDAO.getReviewSummaryByProductId(productId);
 
         Map<Integer, Integer> ratingCount = reviewDAO.countReviewsByRating(productId);
         for (int i = 1; i <= 5; i++) {
             ratingCount.putIfAbsent(i, 0);
         }
-        /* ================= RELATED PRODUCTS ================= */
         List<Product> relatedProducts =
                 productDAO.getRelatedProducts(
                         product.getCategoryId(),
@@ -55,14 +51,12 @@ public class ProductService {
             }
         }
 
-        /* ================= DTO ================= */
         ProductDetailDTO dto = new ProductDetailDTO();
         dto.setProduct(product);
         dto.setCategory(category);
         dto.setPromotion(promotion);
         dto.setSpecifications(specificationDAO.getByProductId(productId));
 
-        // ===== FIX LOGIC: KHÔNG SET TRÙNG, KHÔNG NPE =====
         if (summary != null) {
             dto.setAvgRating(summary.getAvgRating());
             dto.setTotalReviews(summary.getTotalReviews());
@@ -72,15 +66,11 @@ public class ProductService {
         }
 
         dto.setRatingCount(ratingCount);
-
-
-
         dto.setRelatedProductCards(relatedCards);
 
-        /* ================= PRICE ================= */
         if (promotion != null) {
             double discounted =
-                    product.getPrice() * (100 - promotion.getDiscountPercent()) / 100.0;
+                    product.getOriginalPrice() * (100 - promotion.getDiscountPercent()) / 100.0;
             dto.setDiscountedPrice(discounted);
         }
 

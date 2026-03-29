@@ -89,7 +89,7 @@
                     <div class="review-card">
 
                         <div class="review-product-info">
-                            <img src="${pageContext.request.contextPath}/assets/image/Product/${r.productImage}"
+                            <img src="${r.productImage}"
                                  alt="${r.productName}">
                             <div class="product-details">
                                 <strong>${r.productName}</strong>
