@@ -86,7 +86,7 @@
 }
 
 .user-dropdown a:hover {
-    background-color: #f0fdfa;
+    background-color: #f0fdf4;
     color: var(--color-primary);
     padding-left: 25px;
 }
@@ -171,7 +171,7 @@
 
 .search-bar:focus {
     border-color: var(--color-primary-dark);
-    box-shadow: 0 0 8px rgba(45, 184, 155, 0.2);
+    box-shadow: 0 0 8px rgba(22, 163, 74, 0.2);
 }
 
 .search-btn {
