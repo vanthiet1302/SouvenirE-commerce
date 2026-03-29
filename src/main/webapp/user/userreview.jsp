@@ -9,13 +9,14 @@
     <title>Đánh giá của tôi - INOLA</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header-renew.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/HomePageFooter.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/User.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/HomePageAlter.css">
 </head>
 
 <body>
-<jsp:include page="/views/common/header-user.jsp"/>
+<jsp:include page="/views/common/header-renew.jsp"/>
 
 <div class="page-container">
 

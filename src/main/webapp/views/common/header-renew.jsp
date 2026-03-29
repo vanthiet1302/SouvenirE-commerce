@@ -1,72 +1,92 @@
-<%-- Created by IntelliJ IDEA. User: Admin Date: 3/28/2026 Time: 10:08 PM To change this template use File | Settings |
-  File Templates. --%>
-  <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="utf-8" %>
-    <header class="navbar">
-      <div class="top-bar">
-        <div class="top-bar__left">
-          <a href="#">Seller Center</a>
-          <span class="divider-header">|</span>
-          <div class="dropdown">
-            <button class="dropdown__trigger">English</button>
-            <ul class="dropdown__menu">
-              <li><a href="#">English</a></li>
-              <li><a href="#">Tiếng Việt</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="top-bar__right">
-          <a href="#">Blogs</a>
-          <span class="divider">|</span>
-          <a href="#" class="login">Login</a>
-          <span class="divider">|</span>
-          <a href="#">Register</a>
-        </div>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+
+<header class="navbar">
+  <div class="top-bar page-shell">
+    <div class="top-bar__left">
+      <a href="${pageContext.request.contextPath}/home">Seller Center</a>
+      <span class="divider-header">|</span>
+      <div class="dropdown">
+        <button class="dropdown__trigger" type="button" aria-expanded="false">Tiếng Việt</button>
+        <ul class="dropdown__menu" aria-hidden="true">
+          <li><a href="#">English</a></li>
+          <li><a href="#">Tiếng Việt</a></li>
+        </ul>
       </div>
+    </div>
 
-      <div class="main-bar">
-        <div class="main-bar__left">
-          <button class="hamburger">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-          </button>
-          <a href="#" class="logo">
-            <img src="/assets/images/logo-inola.png" alt="logo-inola">
-          </a>
-        </div>
-        <div class="search-bar">
-          <input type="text" placeholder="Search..." />
-          <button class="search-btn">Tim kiếm</button>
-        </div>
-        <div class="cart">
-          <span class="cart-badge">0</span>
-          🛒
-        </div>
-      </div>
+    <div class="top-bar__right">
+      <c:choose>
+        <c:when test="${not empty sessionScope.userInSession}">
+          <span class="welcome-text">Xin chào, ${sessionScope.userInSession.fullName}</span>
+          <span class="divider">|</span>
+          <a href="${pageContext.request.contextPath}/user/profile">Tài khoản</a>
+          <span class="divider">|</span>
+          <a href="${pageContext.request.contextPath}/logout" class="login">Đăng xuất</a>
+        </c:when>
+        <c:otherwise>
+          <a href="${pageContext.request.contextPath}/login" class="login">Đăng nhập</a>
+          <span class="divider">|</span>
+          <a href="${pageContext.request.contextPath}/signup">Đăng ký</a>
+        </c:otherwise>
+      </c:choose>
+    </div>
+  </div>
 
-      <nav class="nav-links">
-        <a href="#" class="nav-links__category">Vietnamese Gifts</a>
-        <a href="#">Personalized Gifts</a>
-        <a href="#" class="active">Gift Box</a>
-        <a href="#">Chus Exclusive</a>
-        <a href="#">Cooperate Gifts</a>
-        <a href="#">Vietnamese Gifts & Souvenirs</a>
-        <a href="#">People Buy Now</a>
-      </nav>
-    </header>
+  <div class="main-bar page-shell">
+    <div class="main-bar__left">
+      <a href="${pageContext.request.contextPath}/home" class="logo" aria-label="Trang chủ INOLA">
+        <img src="${pageContext.request.contextPath}/assets/images/logo-inola.png" alt="INOLA logo">
+      </a>
+    </div>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        const trigger = document.querySelector('.dropdown__trigger');
-        const menu = document.querySelector('.dropdown__menu');
+    <form action="${pageContext.request.contextPath}/search" method="get" class="search-bar" role="search">
+      <input type="text" name="keyword" placeholder="Tìm kiếm sản phẩm..." />
+      <button class="search-btn" type="submit">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+    </form>
 
-        trigger.addEventListener('click', (e) => {
-          e.stopPropagation();
-          menu.classList.toggle('open');
-        });
+    <a class="cart" href="${pageContext.request.contextPath}/cart" aria-label="Giỏ hàng">
+      <i class="fa-solid fa-cart-shopping"></i>
+      <span class="cart-badge" id="header-cart-count">
+        <c:choose>
+          <c:when test="${sessionScope.cart != null}">
+            ${sessionScope.cart.totalQuantity()}
+          </c:when>
+          <c:otherwise>0</c:otherwise>
+        </c:choose>
+      </span>
+    </a>
+  </div>
 
-        document.addEventListener('click', () => {
-          menu.classList.remove('open');
-        });
-      });
-    </script>
+  <nav class="nav-links page-shell" aria-label="Danh mục sản phẩm">
+    <c:forEach var="c" items="${topCategories}">
+      <a href="${pageContext.request.contextPath}/product-type?id=${c.id}">${c.category_name}</a>
+    </c:forEach>
+  </nav>
+</header>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const trigger = document.querySelector('.dropdown__trigger');
+    const menu = document.querySelector('.dropdown__menu');
+
+    if (!trigger || !menu) {
+      return;
+    }
+
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = menu.classList.toggle('open');
+      trigger.setAttribute('aria-expanded', String(isOpen));
+      menu.setAttribute('aria-hidden', String(!isOpen));
+    });
+
+    document.addEventListener('click', () => {
+      menu.classList.remove('open');
+      trigger.setAttribute('aria-expanded', 'false');
+      menu.setAttribute('aria-hidden', 'true');
+    });
+  });
+</script>

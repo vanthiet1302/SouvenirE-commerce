@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html>
@@ -39,7 +39,6 @@
 
 <h2>Mini Cloudinary Dashboard</h2>
 
-<!-- Upload -->
 <form action="upload" method="post" enctype="multipart/form-data">
     <input type="file" name="file" required />
     <button type="submit">Upload</button>
