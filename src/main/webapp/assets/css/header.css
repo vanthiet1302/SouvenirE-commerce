@@ -99,9 +99,9 @@
     color: #999;
 }
 
-.user-dropdown .logout { color: var(--color-danger); }
+.user-dropdown .logout { color: var(--bg-white); }
 .user-dropdown .logout:hover { background-color: #fff5f6; }
-/
+
 /* Main header */
 .main-header {
     display: flex;

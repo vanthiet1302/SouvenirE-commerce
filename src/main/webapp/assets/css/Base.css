@@ -187,7 +187,7 @@ p {
     top: 10px;
     left: 10px;
     background-color: var(--color-sale);
-    color: #fff;
+    color: var(--bg-white);
     padding: 4px 10px;
     font-size: 12px;
     font-weight: bold;
@@ -272,7 +272,7 @@ p {
 
 .price-container {
     background: #f3f3f3;
-    color: #333;
+    color: var(--text-main);
     padding: 12px;
     display: flex;
     justify-content: center;
@@ -304,18 +304,18 @@ p {
 
 .btn-primary {
     background: #000;
-    color: #fff;
+    color: var(--bg-white);
 }
 
 .btn-primary:hover {
-    background: #333;
+    background: var(--text-main);
     transform: scale(1.05);
 }
 
 .btn-outline {
-    border: 1px solid #333;
-    color: #333;
-    background: #fff;
+    border: 1px solid var(--text-main);
+    color: var(--text-main);
+    background: var(--bg-white);
 }
 
 .btn-outline:hover {
