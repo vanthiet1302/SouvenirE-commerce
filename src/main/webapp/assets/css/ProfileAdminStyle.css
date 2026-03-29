@@ -1,182 +1,197 @@
-
+/* Layout */
 .main-content-page {
     padding: 25px 40px;
 }
 
 .content-container {
-    background: #fff;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     min-height: 85vh;
 }
 
-/* Header của trang (Tiêu đề + Nút lưu) */
+/* Header */
 .page-header-control {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     align-items: center;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 20px;
 }
 
 .page-header-control h2 {
     font-size: 22px;
     font-weight: 600;
-    color: #333;
+    color: var(--text-heading);
 }
 
 .btn-save {
-    background: #2f4026; /* Màu xanh lá đậm chủ đạo */
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: 0.3s;
+    background: var(--color-primary);
+    color: var(--bg-white);
 }
 
 .btn-save:hover {
-    background: #3f5533;
+    background: var(--color-primary-dark);
 }
 
-/* ============================================= */
-/* === 5. PROFILE SPECIFIC STYLES (Phần riêng) === */
-/* ============================================= */
-
-/* Layout chia 2 cột: Trái 300px - Phải tự giãn */
-.profile-layout {
-    display: grid;
-    grid-template-columns: 300px 1fr;
-    gap: 35px;
-}
-
-/* --- CỘT TRÁI (Avatar & Pass) --- */
-.avatar-card, .security-card {
-    background: #f8fafc; /* Nền xám nhẹ */
-    border: 1px solid #e2e8f0;
-    border-radius: 12px;
-    padding: 25px;
-    text-align: center;
-    margin-bottom: 25px;
-}
-
-/* Avatar tròn */
-.avatar-wrapper {
-    position: relative;
-    width: 110px;
-    height: 110px;
-    margin: 0 auto 15px;
-}
-
-.avatar-wrapper img {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid #fff;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Nút camera nhỏ */
-.camera-icon {
-    position: absolute;
-    bottom: 5px;
-    right: 5px;
-    background: #2f4026;
-    color: #fff;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
+/* Tabs */
+.settings-tabs {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 14px;
-    border: 2px solid #fff;
-    transition: 0.2s;
+    border-bottom: 1px solid var(--border-normal);
+    margin-bottom: 30px;
+    gap: 10px;
 }
 
-.camera-icon:hover {
-    background: #4a663d;
-}
-
-.avatar-card h3 {
+/* Section */
+.setting-section h3 {
     font-size: 18px;
-    color: #1f2937;
-    margin-bottom: 5px;
-    font-weight: 600;
-}
-
-.avatar-card .role {
-    font-size: 13px;
-    color: #6b7280;
-}
-
-/* Phần bảo mật */
-.security-card h4 {
-    text-align: left;
-    margin-bottom: 15px;
-    font-size: 16px;
-    color: #374151;
-    border-bottom: 1px solid #e5e7eb;
-    padding-bottom: 8px;
-}
-
-/* --- CỘT PHẢI (Form thông tin) --- */
-.section-title {
-    font-size: 18px;
-    font-weight: 600;
-    color: #2f4026;
-    margin-bottom: 25px;
-    padding-left: 10px;
-    border-left: 4px solid #2f4026;
-}
-
-/* Form Styles */
-.form-group {
+    color: var(--text-heading);
     margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-light);
+}
+
+/* Form */
+.form-group {
     text-align: left;
 }
 
-.form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 500;
-    font-size: 14px;
-    color: #4b5563;
+.form-group input:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(75, 18, 131, 0.1);
 }
 
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 12px 15px;
-    border: 1px solid #d1d5db;
-    border-radius: 8px;
-    font-size: 14px;
-    outline: none;
-    transition: 0.3s;
-    background: #fff;
-    color: #333;
-}
-
-/* Hiệu ứng khi click vào ô nhập */
-.form-group input:focus,
-.form-group textarea:focus {
-    border-color: #2f4026;
-    box-shadow: 0 0 0 3px rgba(47, 64, 38, 0.1);
-}
-
-/* Chia 2 cột trong form */
+/* Grid */
 .row-2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 25px;
 }
 
+/* Toggle */
+.toggle-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--bg-light);
+}
 
+.toggle-info h4 {
+    font-size: 15px;
+}
+
+.toggle-info p {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.switch {
+    width: 50px;
+    height: 24px;
+}
+
+/* Table */
+.setting-table {
+    margin-top: 10px;
+}
+
+/* Badge */
+.badge-role.admin {
+    background: var(--bg-light);
+    color: var(--color-sale);
+}
+
+.badge-role.editor {
+    background: var(--bg-light);
+    color: var(--color-primary);
+}
+
+/* Text */
+.text-red {
+    color: var(--color-sale);
+}
+
+/* Flex */
+.flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+/* Small button */
+.btn-small {
+    background: var(--bg-light);
+}
+
+/* Tab button */
+.tab-btn {
+    text-decoration: none;
+    padding: 12px 20px;
+    font-size: 15px;
+    color: var(--text-muted);
+    font-weight: 500;
+    border-bottom: 3px solid transparent;
+}
+
+.tab-btn:hover {
+    color: var(--color-primary);
+    background: var(--bg-light);
+}
+
+.tab-btn.active {
+    color: var(--color-primary);
+    border-bottom: 3px solid var(--color-primary);
+}
+
+/* Add card */
+.btn-add-card {
+    background: var(--bg-white);
+    border: 1px dashed var(--color-primary);
+    color: var(--color-primary);
+}
+
+.btn-add-card:hover {
+    background: var(--bg-light);
+}
+
+/* Bank grid */
+.bank-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
+}
+
+/* Bank card  */
+.bank-card {
+    border-radius: 15px;
+    padding: 25px;
+    color: var(--bg-white);
+    box-shadow: var(--shadow-md);
+}
+
+/* Card action */
+.card-actions {
+    background: rgba(0,0,0,0.6);
+}
+
+.card-actions button {
+    background: var(--bg-white);
+    color: var(--text-main);
+}
+
+/* Payment */
+.payment-item {
+    border: 1px solid var(--border-normal);
+    background: var(--bg-light);
+}
+
+.cod-icon {
+    background: var(--color-primary);
+    color: var(--bg-white);
+}
+
+.method-info h4 {
+    color: var(--text-heading);
+}
+
+.method-info p {
+    color: var(--text-muted);
+}

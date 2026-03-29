@@ -1,48 +1,14 @@
-/* Admin Dashboard Styles - Inspired by Sales CRM Design */
-
-:root {
-    --primary: #2563eb;
-    --primary-foreground: #ffffff;
-    --secondary: #f1f5f9;
-    --secondary-foreground: #0f172a;
-    --muted: #f8fafc;
-    --muted-foreground: #64748b;
-    --accent: #f1f5f9;
-    --accent-foreground: #0f172a;
-    --destructive: #ef4444;
-    --border: #e2e8f0;
-    --input: #e2e8f0;
-    --ring: #2563eb;
-    --background: #ffffff;
-    --foreground: #0f172a;
-    --card: #ffffff;
-    --card-foreground: #0f172a;
-    --radius: 0.5rem;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    background-color: var(--muted);
-    color: var(--foreground);
-    line-height: 1.5;
-}
-
+/* Layout */
 .admin-container {
     display: flex;
     min-height: 100vh;
 }
 
-/* Sidebar Styles */
+/* Sidebar */
 .admin-sidebar {
     width: 260px;
-    background-color: var(--card);
-    border-right: 1px solid var(--border);
+    background-color: var(--bg-white);
+    border-right: 1px solid var(--border-normal);
     display: flex;
     flex-direction: column;
     position: fixed;
@@ -54,7 +20,7 @@ body {
 
 .sidebar-header {
     padding: 1.5rem;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--border-normal);
 }
 
 .sidebar-logo {
@@ -62,19 +28,18 @@ body {
     align-items: center;
     gap: 0.75rem;
     text-decoration: none;
-    color: var(--foreground);
+    color: var(--text-main);
 }
 
 .sidebar-logo-icon {
     width: 32px;
     height: 32px;
-    background-color: var(--primary);
-    color: var(--primary-foreground);
-    border-radius: var(--radius);
+    background-color: var(--color-primary);
+    color: var(--bg-white);
+    border-radius: var(--radius-sm);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.25rem;
 }
 
 .sidebar-logo-text {
@@ -88,10 +53,6 @@ body {
     padding: 1rem 0;
 }
 
-.sidebar-menu {
-    list-style: none;
-}
-
 .sidebar-menu-item {
     margin: 0.25rem 0.75rem;
 }
@@ -102,38 +63,25 @@ body {
     gap: 0.75rem;
     padding: 0.625rem 0.75rem;
     width: 100%;
-    border: none;
     background: transparent;
-    color: var(--muted-foreground);
-    border-radius: var(--radius);
+    color: var(--text-muted);
+    border-radius: var(--radius-sm);
     cursor: pointer;
-    text-decoration: none;
     font-size: 0.875rem;
-    font-weight: 500;
-    transition: all 0.2s;
 }
 
 .sidebar-menu-button:hover {
-    background-color: var(--accent);
-    color: var(--accent-foreground);
+    background-color: var(--bg-light);
+    color: var(--text-main);
 }
 
 .sidebar-menu-button.active {
-    background-color: var(--secondary);
-    color: var(--foreground);
+    background-color: var(--bg-light);
+    color: var(--text-main);
     font-weight: 600;
 }
 
-.sidebar-menu-icon {
-    width: 1rem;
-    height: 1rem;
-}
-
-.sidebar-footer {
-    padding: 1rem;
-    border-top: 1px solid var(--border);
-}
-
+/* USER */
 .sidebar-user {
     display: flex;
     align-items: center;
@@ -144,31 +92,19 @@ body {
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    background-color: var(--primary);
-    color: var(--primary-foreground);
+    background-color: var(--color-primary);
+    color: var(--bg-white);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 600;
-    font-size: 0.875rem;
-}
-
-.sidebar-user-info {
-    flex: 1;
-}
-
-.sidebar-user-name {
-    font-size: 0.875rem;
-    font-weight: 500;
-    display: block;
 }
 
 .sidebar-user-role {
-    font-size: 0.75rem;
-    color: var(--muted-foreground);
+    font-size: 12px;
+    color: var(--text-muted);
 }
 
-/* Main Content */
+/* Main */
 .admin-main {
     flex: 1;
     margin-left: 260px;
@@ -178,53 +114,39 @@ body {
 
 /* Topbar */
 .admin-topbar {
-    background-color: var(--card);
-    border-bottom: 1px solid var(--border);
+    background-color: var(--bg-white);
+    border-bottom: 1px solid var(--border-normal);
     padding: 1rem 2rem;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    position: sticky;
-    top: 0;
-    z-index: 50;
-}
-
-.topbar-search {
-    flex: 1;
-    max-width: 400px;
 }
 
 .topbar-search input {
     width: 100%;
-    padding: 0.5rem 1rem;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    font-size: 0.875rem;
-    background-color: var(--muted);
+    padding: 8px 12px;
+    border: 1px solid var(--border-normal);
+    border-radius: var(--radius-sm);
+    background-color: var(--bg-light);
+    font-family: inherit;
 }
 
 .topbar-actions {
     display: flex;
-    align-items: center;
     gap: 1rem;
 }
 
 .topbar-button {
-    padding: 0.5rem;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    border-radius: var(--radius);
-    color: var(--muted-foreground);
-    transition: all 0.2s;
+    padding: 8px;
+    border-radius: var(--radius-sm);
+    color: var(--text-muted);
 }
 
 .topbar-button:hover {
-    background-color: var(--accent);
-    color: var(--accent-foreground);
+    background-color: var(--bg-light);
+    color: var(--text-main);
 }
 
-/* Content Area */
+/* Content */
 .admin-content {
     flex: 1;
     padding: 2rem;
@@ -232,7 +154,6 @@ body {
 
 .content-header {
     display: flex;
-    align-items: center;
     justify-content: space-between;
     margin-bottom: 1.5rem;
 }
@@ -240,189 +161,32 @@ body {
 .content-title {
     font-size: 1.875rem;
     font-weight: 700;
-    letter-spacing: -0.025em;
+    color: var(--text-heading);
 }
 
-.content-actions {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-/* Cards */
+/* Stats */
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1rem;
-    margin-bottom: 1.5rem;
 }
-
-.stat-card {
-    background-color: var(--card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
+.stat-box {
+    background-color: var(--bg-white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
     padding: 1.5rem;
-    transition: box-shadow 0.2s;
+    box-shadow: var(--shadow-sm);
 }
 
-.stat-card:hover {
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+.stat-box-title {
+    font-size: 14px;
+    color: var(--text-muted);
 }
 
-.stat-card-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 0.5rem;
-}
-
-.stat-card-title {
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: var(--muted-foreground);
-}
-
-.stat-card-icon {
-    width: 1rem;
-    height: 1rem;
-    color: var(--muted-foreground);
-}
-
-.stat-card-value {
-    font-size: 1.875rem;
+.stat-box-value {
+    font-size: 28px;
     font-weight: 700;
-    margin-bottom: 0.25rem;
-}
-
-.stat-card-description {
-    font-size: 0.75rem;
-    color: var(--muted-foreground);
-}
-
-/* Card Component */
-.card {
-    background-color: var(--card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    overflow: hidden;
-}
-
-.card-header {
-    padding: 1.5rem;
-    border-bottom: 1px solid var(--border);
-}
-
-.card-title {
-    font-size: 1.125rem;
-    font-weight: 600;
-    margin-bottom: 0.25rem;
-}
-
-.card-description {
-    font-size: 0.875rem;
-    color: var(--muted-foreground);
-}
-
-.card-content {
-    padding: 1.5rem;
-}
-
-/* Button */
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    font-size: 0.875rem;
-    font-weight: 500;
-    border-radius: var(--radius);
-    border: none;
-    cursor: pointer;
-    transition: all 0.2s;
-    text-decoration: none;
-}
-
-.btn-primary {
-    background-color: var(--primary);
-    color: var(--primary-foreground);
-}
-
-.btn-primary:hover {
-    opacity: 0.9;
-}
-
-.btn-secondary {
-    background-color: var(--secondary);
-    color: var(--secondary-foreground);
-}
-
-.btn-secondary:hover {
-    opacity: 0.8;
-}
-
-.btn-icon {
-    width: 1rem;
-    height: 1rem;
-}
-
-/* Table */
-.data-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.data-table thead {
-    background-color: var(--muted);
-}
-
-.data-table th {
-    padding: 0.75rem 1rem;
-    text-align: left;
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: var(--muted-foreground);
-    border-bottom: 1px solid var(--border);
-}
-
-.data-table td {
-    padding: 0.75rem 1rem;
-    font-size: 0.875rem;
-    border-bottom: 1px solid var(--border);
-}
-
-.data-table tbody tr:hover {
-    background-color: var(--muted);
-}
-
-/* Badge */
-.badge {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.25rem 0.625rem;
-    font-size: 0.75rem;
-    font-weight: 500;
-    border-radius: 9999px;
-}
-
-.badge-success {
-    background-color: #dcfce7;
-    color: #166534;
-}
-
-.badge-warning {
-    background-color: #fef3c7;
-    color: #92400e;
-}
-
-.badge-danger {
-    background-color: #fee2e2;
-    color: #991b1b;
-}
-
-.badge-info {
-    background-color: #dbeafe;
-    color: #1e40af;
+    color: var(--text-heading);
 }
 
 /* Tabs */
@@ -432,30 +196,20 @@ body {
 
 .tabs-list {
     display: flex;
-    gap: 0.5rem;
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 1rem;
+    gap: 10px;
+    border-bottom: 1px solid var(--border-normal);
 }
 
 .tabs-trigger {
-    padding: 0.5rem 1rem;
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: var(--muted-foreground);
-    background: transparent;
-    border: none;
+    padding: 8px 16px;
+    font-size: 14px;
+    color: var(--text-muted);
     border-bottom: 2px solid transparent;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-
-.tabs-trigger:hover {
-    color: var(--foreground);
 }
 
 .tabs-trigger.active {
-    color: var(--foreground);
-    border-bottom-color: var(--primary);
+    color: var(--color-primary);
+    border-bottom-color: var(--color-primary);
 }
 
 .tabs-content {
@@ -470,18 +224,9 @@ body {
 @media (max-width: 768px) {
     .admin-sidebar {
         transform: translateX(-100%);
-        transition: transform 0.3s;
-    }
-
-    .admin-sidebar.open {
-        transform: translateX(0);
     }
 
     .admin-main {
         margin-left: 0;
-    }
-
-    .stats-grid {
-        grid-template-columns: 1fr;
     }
 }

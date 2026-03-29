@@ -1,19 +1,17 @@
-
-
-
+/* Layout */
 .main-content-page {
     padding: 25px 40px;
 }
 
 .content-container {
-    background: #fff;
+    background: var(--bg-white);
     padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
     min-height: 80vh;
 }
 
-/* Header Control */
+/* Header */
 .page-header-control {
     display: flex;
     justify-content: space-between;
@@ -24,33 +22,10 @@
 .page-header-control h2 {
     font-size: 22px;
     font-weight: 600;
-    color: #333;
+    color: var(--text-heading);
 }
 
-/* Nút Xuất */
-.export-btn {
-    background: #2f4026;
-    color: #fff;
-    padding: 8px 18px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: 0.3s;
-}
-
-.export-btn:hover {
-    opacity: 0.9;
-}
-
-
-/* ============================================ */
-/* === DASHBOARD SPECIFIC STYLES (CARDS) === */
-/* ============================================ */
-
+/* Dashboard_card */
 .cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -58,91 +33,77 @@
     margin-bottom: 40px;
 }
 
-.card {
-    background: #caf1c5; /* Nền xám rất nhạt để nổi trên nền trắng của box cha */
+.dashboard-card {
+    background: var(--bg-light);
     padding: 20px;
-    border-radius: 12px;
-    border: 1px solid #cedbe8; /* Viền mỏng */
-    transition: all 0.3s ease;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-light);
+    transition: 0.3s ease;
     display: flex;
     align-items: flex-start;
     gap: 15px;
 }
 
-.card:hover {
+.dashboard-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-    border-color: #cbd5e1;
+    box-shadow: var(--shadow-sm);
 }
 
-/* Icon trong Card */
+/* Icon */
 .card-icon {
     width: 45px;
     height: 45px;
-    border-radius: 10px;
+    border-radius: var(--radius-sm);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 20px;
-    color: #fff;
+    color: var(--bg-white);
     flex-shrink: 0;
 }
 
-.card-icon.blue {
-    background: linear-gradient(135deg, #3b82f6, #2563eb);
-}
+/* gradient */
+.card-icon.blue { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+.card-icon.orange { background: linear-gradient(135deg, #f97316, #ea580c); }
+.card-icon.green { background: linear-gradient(135deg, #22c55e, #16a34a); }
+.card-icon.purple { background: linear-gradient(135deg, #a855f7, #9333ea); }
 
-.card-icon.orange {
-    background: linear-gradient(135deg, #f97316, #ea580c);
-}
-
-.card-icon.green {
-    background: linear-gradient(135deg, #22c55e, #16a34a);
-}
-
-.card-icon.purple {
-    background: linear-gradient(135deg, #a855f7, #9333ea);
-}
-
-/* Text trong Card */
-.card h3 {
+/* Text */
+.dashboard-card h3 {
     font-size: 14px;
-    color: #64748b;
+    color: var(--text-muted);
     margin-bottom: 5px;
-    font-weight: 500;
 }
 
-.card .value {
+.dashboard-card .value {
     font-size: 22px;
     font-weight: 700;
-    color: #1e293b;
-    margin-bottom: 5px;
+    color: var(--text-heading);
 }
 
-/* Status tăng/giảm */
+/* Status */
 .status {
     font-size: 13px;
     font-weight: 600;
     display: inline-flex;
     align-items: center;
     gap: 4px;
+    padding: 2px 8px;
+    border-radius: var(--radius-sm);
 }
 
 .status.up {
-    color: #16a34a;
-    background: #dcfce7;
-    padding: 2px 8px;
-    border-radius: 12px;
+    color: var(--color-primary);
+    background: var(--bg-light);
 }
 
 .status.down {
-    color: #dc2626;
-    background: #fee2e2;
-    padding: 2px 8px;
-    border-radius: 12px;
+    color: var(--color-sale);
+    background: var(--bg-light);
 }
 
-/* Title cho phần bảng */
+
+/* Section */
 .section-title {
     margin-bottom: 15px;
 }
@@ -150,75 +111,50 @@
 .section-title h3 {
     font-size: 18px;
     font-weight: 600;
-    color: #333;
+    color: var(--text-heading);
 }
 
-/* ============================================ */
-/* === TABLE STYLE (Chuẩn format căn giữa) === */
-/* ============================================ */
-.custom-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.custom-table th, .custom-table td {
-    padding: 14px;
-    border-bottom: 1px solid #e5e7eb;
-    text-align: center;
-    vertical-align: middle;
-}
-
-.custom-table th {
-    background: #f9fafb;
-    font-weight: 600;
-    color: #374151;
-}
-
-.custom-table tr:hover {
-    background: #f3f4f6;
-    transition: 0.15s;
-}
-
-/* Badge số thứ tự */
+/* Badge */
 .badge.gray {
-    background: #f1f5f9;
-    color: #64748b;
+    background: var(--bg-light);
+    color: var(--text-muted);
     padding: 4px 10px;
-    border-radius: 6px;
+    border-radius: var(--radius-sm);
     font-weight: 600;
 }
 
-/* Xu hướng trong bảng */
+
+/* Trend */
 .trend {
     font-weight: 600;
 }
 
 .trend.up {
-    color: #16a34a;
+    color: var(--color-primary);
 }
 
 .trend.down {
-    color: #dc2626;
+    color: var(--color-sale);
 }
 
-/* Ngôi sao đánh giá */
+/* Star */
 .text-yellow {
-    color: #facc15;
+    color: var(--color-accent);
     margin-left: 3px;
     font-size: 12px;
 }
-/* =========================================
-   TOP 7 PRODUCTS CHART
-   ========================================= */
+
+
+/* Chart */
 .top-products-chart {
     display: flex;
-    justify-content: space-between; /* Tự động chia đều khoảng cách */
+    justify-content: space-between;
     align-items: flex-end;
-    gap: 10px; /* Khoảng cách nhỏ lại để vừa 7 cột */
-    padding: 50px 10px 20px; /* Tăng padding top để chứa vương miện */
+    gap: 10px;
+    padding: 50px 10px 20px;
     margin-top: 20px;
-    border-bottom: 1px solid #eee;
-    overflow-x: auto; /* Cho phép cuộn ngang nếu màn hình nhỏ */
+    border-bottom: 1px solid var(--border-light);
+    overflow-x: auto;
 }
 
 .chart-column {
@@ -226,8 +162,8 @@
     flex-direction: column;
     align-items: center;
     position: relative;
-    flex: 1; /* Các cột độ rộng bằng nhau */
-    min-width: 80px; /* Đảm bảo không bị co quá nhỏ */
+    flex: 1;
+    min-width: 80px;
     transition: transform 0.3s ease;
 }
 
@@ -235,13 +171,13 @@
     transform: translateY(-5px);
 }
 
-/* === Phần cột màu (Bar) === */
+/* Bar */
 .bar {
-    width: 40px; /* Cột nhỏ lại chút cho thanh thoát */
+    width: 40px;
     border-radius: 6px 6px 0 0;
     position: relative;
     margin-bottom: 15px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-shadow: var(--shadow-sm);
     animation: growUp 1s ease-out;
 }
 
@@ -249,22 +185,19 @@
     from { height: 0; }
 }
 
-/* Tooltip Hover */
+/* Tooltip */
 .bar .tooltip {
     position: absolute;
     top: -30px;
     left: 50%;
     transform: translateX(-50%);
-    background: #333;
-    color: #fff;
+    background: var(--text-heading);
+    color: var(--bg-white);
     padding: 4px 8px;
     border-radius: 4px;
     font-size: 11px;
-    white-space: nowrap;
     opacity: 0;
     transition: 0.2s;
-    pointer-events: none;
-    z-index: 10;
 }
 
 .chart-column:hover .bar .tooltip {
@@ -272,31 +205,14 @@
     top: -40px;
 }
 
-/* === Phân màu theo thứ hạng === */
 
-/* Rank 1: Vàng - King */
-.rank-1 .bar { background: linear-gradient(180deg, #ffd700 0%, #fdb931 100%); }
-.rank-1 .rank-badge { background: #eab308; border-color: #fff; transform: scale(1.2); }
-.crown-icon {
-    position: absolute; top: -55px; color: #eab308; font-size: 24px;
-    animation: bounce 2s infinite;
-}
-@keyframes bounce { 0%, 100% {transform: translateY(0);} 50% {transform: translateY(-5px);} }
+/* Rank color */
+.rank-1 .bar { background: linear-gradient(180deg, #ffd700, #fdb931); }
+.rank-2 .bar { background: linear-gradient(180deg, #c0c0c0, #a9a9a9); }
+.rank-3 .bar { background: linear-gradient(180deg, #cd7f32, #b87333); }
+.normal-rank .bar { background: linear-gradient(180deg, #a5f3fc, #38bdf8); opacity: 0.8; }
 
-/* Rank 2: Bạc */
-.rank-2 .bar { background: linear-gradient(180deg, #c0c0c0 0%, #a9a9a9 100%); }
-.rank-2 .rank-badge { background: #94a3b8; }
-
-/* Rank 3: Đồng */
-.rank-3 .bar { background: linear-gradient(180deg, #cd7f32 0%, #b87333 100%); }
-.rank-3 .rank-badge { background: #d97706; }
-
-/* Rank 4 - 7: Xanh (Bình thường) */
-.normal-rank .bar { background: linear-gradient(180deg, #a5f3fc 0%, #38bdf8 100%); opacity: 0.8; }
-.normal-rank .rank-badge { background: #e2e8f0; color: #64748b; font-weight: 600; font-size: 12px; }
-
-
-/* === Badge số thứ tự (#) === */
+/* Badgo */
 .rank-badge {
     width: 24px;
     height: 24px;
@@ -305,56 +221,32 @@
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    color: white;
+    color: var(--bg-white);
     font-size: 12px;
     position: absolute;
-    bottom: 80px; /* Đẩy lên trên thông tin */
-    z-index: 2;
-    border: 2px solid #fff;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    bottom: 80px;
+    border: 2px solid var(--bg-white);
 }
 
-/* === Thông tin sản phẩm === */
+/* Product-Info */
 .product-info {
     text-align: center;
-    margin-top: 5px;
-    width: 100%;
 }
 
 .product-info img {
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    object-fit: cover;
-    border: 1px solid #eee;
-    margin-bottom: 4px;
+    border: 1px solid var(--border-light);
 }
 
 .product-info p {
     font-size: 12px;
     font-weight: 600;
-    color: #333;
-    margin: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 100%;
-    padding: 0 5px;
+    color: var(--text-heading);
 }
 
 .product-info .sales {
     font-size: 11px;
-    color: #888;
-}
-
-/* Thanh cuộn đẹp cho bảng nếu màn hình nhỏ */
-.scroll-x::-webkit-scrollbar {
-    height: 6px;
-}
-.scroll-x::-webkit-scrollbar-track {
-    background: #f1f1f1;
-}
-.scroll-x::-webkit-scrollbar-thumb {
-    background: #ccc;
-    border-radius: 10px;
+    color: var(--text-muted);
 }

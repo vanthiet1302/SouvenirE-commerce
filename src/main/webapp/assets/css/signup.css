@@ -1,26 +1,7 @@
-/* ===== RESET ===== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-
-.btn_login a {
-    color: #fff;
-    text-decoration: none;
-    display: inline-block;
-}
-
-body {
-    background-color: #f8f9fa;
-    color: #333;
-}
-
-/* ===== HEADER ===== */
+/* Header */
 .page_login {
-    background-color: #fff;
-    border-bottom: 1px solid #ddd;
+    background-color: var(--bg-white);
+    border-bottom: 1px solid var(--border-normal);
     padding: 15px 0;
 }
 
@@ -33,37 +14,31 @@ body {
     align-items: center;
 }
 
+/* Button */
 .pix_button {
     display: inline-block;
-    text-decoration: none;
     padding: 8px 15px;
-    border-radius: 6px;
+    border-radius: var(--radius-sm);
     font-weight: 600;
     font-size: 14px;
     cursor: pointer;
-    border: none;
-    transition: background-color 0.3s ease;
 }
 
 .purple_bg {
-    background-color: #800080;
-    color: #fff;
+    background-color: var(--color-primary);
+    color: var(--bg-white);
 }
 
-.purple_bg:hover {
-    background-color: #800080;
-}
-
-/* ===== MAIN CONTENT ===== */
+/* Main */
 .main_content {
     display: flex;
     width: 90%;
     max-width: 900px;
     margin: 40px auto;
-    border-radius: 10px;
+    border-radius: var(--radius-md);
     overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
+    box-shadow: var(--shadow-md);
+    background-color: var(--bg-white);
 }
 
 .split_panel {
@@ -73,18 +48,14 @@ body {
     flex-direction: column;
 }
 
-/* ===== LEFT PANEL==== */
+/* Left panel */
 .left_panel {
-    /* CHỈ THAY ĐỔI PHẦN NÀY */
-    background: linear-gradient(135deg, #800080, #ffffff); /* Tím (#6E4ACD) → Trắng (#ffffff) */
-    color: var(--white); /* Màu chữ mặc định là trắng */
+    background: linear-gradient(135deg, var(--color-primary), var(--bg-white));
+    color: var(--bg-white);
     text-align: center;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 60px; /* Giữ padding 60px như trong code gốc */
-    /* Loại bỏ các thuộc tính không cần thiết như position/overflow */
 }
 
 .left_panel h1 {
@@ -98,37 +69,35 @@ body {
     margin-bottom: 40px;
 }
 
+/* Button outline */
 .login_button {
-    text-decoration: none;
-    background: none;
-    color: #fff;
-    border: 1px solid #fff;
+    color: var(--bg-white);
+    border: 1px solid var(--bg-white);
     padding: 10px 50px;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     font-size: 14px;
     font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
+    transition: 0.3s;
 }
 
 .login_button:hover {
-    background-color: #fff;
-    color: #800080;
+    background-color: var(--bg-white);
+    color: var(--color-primary);
 }
 
-/* ===== RIGHT PANEL ===== */
+/* Right panel */
 .right_panel {
-    background-color: #fff;
+    background-color: var(--bg-white);
 }
 
 .right_panel h2 {
     font-size: 28px;
-    color: #333;
+    color: var(--text-heading);
     margin-bottom: 30px;
     text-align: center;
-    font-weight: 700;
 }
 
+/* Social */
 .social_login {
     display: flex;
     justify-content: center;
@@ -140,23 +109,22 @@ body {
     width: 35px;
     height: 35px;
     border-radius: 50%;
-    border: 1px solid #ddd;
-    background-color: #fff;
+    border: 1px solid var(--border-normal);
+    background-color: var(--bg-white);
     font-size: 14px;
-    cursor: pointer;
-    line-height: 35px;
     text-align: center;
-    color: #555;
+    color: var(--text-secondary);
 }
 
+/* Separator */
 .separator {
     text-align: center;
-    color: #888;
+    color: var(--text-muted);
     margin-bottom: 30px;
     font-size: 14px;
 }
 
-/* ===== FORM ===== */
+/* Form */
 .signup_form {
     display: flex;
     flex-direction: column;
@@ -167,30 +135,31 @@ body {
     position: relative;
 }
 
+/* Input */
 .input_group input {
     width: 100%;
     padding: 15px;
     padding-right: 45px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    border: 1px solid var(--border-normal);
+    border-radius: var(--radius-sm);
     font-size: 16px;
-    outline: none;
-    transition: border-color 0.3s;
+    background: var(--bg-white);
 }
 
 .input_group input:focus {
-    border-color: #800080;
+    border-color: var(--color-primary);
 }
 
+/* Floating label */
 .input_group label {
     position: absolute;
     top: 50%;
     left: 15px;
     transform: translateY(-50%);
-    color: #888;
+    color: var(--text-muted);
     pointer-events: none;
-    transition: 0.3s ease;
-    background-color: #fff;
+    transition: 0.3s;
+    background-color: var(--bg-white);
     padding: 0 5px;
 }
 
@@ -199,35 +168,30 @@ body {
     top: 0;
     font-size: 12px;
     transform: translateY(-50%);
-    color: #800080;
-    font-weight: 500;
+    color: var(--color-primary);
 }
 
+/* Eye icon */
 .eye_icon {
     position: absolute;
     right: 15px;
     top: 50%;
     transform: translateY(-50%);
-    cursor: pointer;
-    color: #888;
+    color: var(--text-muted);
 }
 
-/* ===== SIGNUP BUTTON===== */
+/* Button */
 .signup_button {
     width: 100%;
     padding: 12px 0;
-    border: none;
-    border-radius: 4px;
-    background-color: #800080;
-    color: #fff;
+    border-radius: var(--radius-sm);
+    background-color: var(--color-primary);
+    color: var(--bg-white);
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 10px;
 }
 
 .signup_button:hover {
-    background-color:#800080;
+    background-color: var(--color-primary-dark);
 }
-
