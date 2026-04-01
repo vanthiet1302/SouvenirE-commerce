@@ -19,14 +19,14 @@
       <c:choose>
         <c:when test="${not empty sessionScope.userInSession}">
           <span class="welcome-text">Xin chào, ${sessionScope.userInSession.fullName}</span>
-          <span class="divider">|</span>
+          <span class="divider-top">|</span>
           <a href="${pageContext.request.contextPath}/user/profile">Tài khoản</a>
-          <span class="divider">|</span>
+          <span class="divider-top">|</span>
           <a href="${pageContext.request.contextPath}/logout" class="login">Đăng xuất</a>
         </c:when>
         <c:otherwise>
           <a href="${pageContext.request.contextPath}/login" class="login">Đăng nhập</a>
-          <span class="divider">|</span>
+          <span class="divider-top">|</span>
           <a href="${pageContext.request.contextPath}/signup">Đăng ký</a>
         </c:otherwise>
       </c:choose>
