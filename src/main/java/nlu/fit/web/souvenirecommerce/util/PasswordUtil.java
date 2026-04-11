@@ -1,18 +1,38 @@
 package nlu.fit.web.souvenirecommerce.util;
 
+import nlu.fit.web.souvenirecommerce.model.entity.UserCredential;
 import org.mindrot.jbcrypt.BCrypt;
+
+import java.security.MessageDigest;
+import java.security.SecureRandom;
+import java.time.Instant;
+import java.time.chrono.ChronoLocalDateTime;
+import java.util.HexFormat;
 
 public class PasswordUtil {
 
-    // Hàm băm mật khẩu (Dùng khi Đăng ký)
     public static String hashPassword(String plainPassword) {
-        // gensalt() tạo ra một chuỗi muối ngẫu nhiên để tăng độ bảo mật
         return BCrypt.hashpw(plainPassword, BCrypt.gensalt());
     }
 
-    // Hàm kiểm tra mật khẩu (Dùng khi Đăng nhập)
     public static boolean checkPassword(String plainPassword, String hashedPassword) {
-        // So sánh mật khẩu người dùng nhập với chuỗi đã mã hóa trong CSDL
         return BCrypt.checkpw(plainPassword, hashedPassword);
+    }
+
+    public String generateSecureToken() {
+        byte[] bytes = new byte[32]; // 32 bytes = 64 ký tự hex
+        new SecureRandom().nextBytes(bytes);
+        return HexFormat.of().formatHex(bytes);
+    }
+
+    // Khi verify reset token — so sánh bằng constant-time để tránh timing attack
+    public boolean isResetTokenValid(UserCredential cred, String token) {
+        if (cred.getResetToken() == null || cred.getResetExpiresAt() == null) return false;
+        boolean tokenMatch = MessageDigest.isEqual(
+                cred.getResetToken().getBytes(),
+                token.getBytes()
+        );
+        boolean notExpired = cred.getResetExpiresAt().isAfter(ChronoLocalDateTime.from(Instant.now()));
+        return tokenMatch && notExpired;
     }
 }

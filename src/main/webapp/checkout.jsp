@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thanh toán - INOLA</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header-renew.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/HomePage.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/HomePageFooter.css">
     <style>
@@ -173,7 +174,7 @@
 </head>
 <body>
 <div class="page-container">
-    <jsp:include page="/views/common/header-user.jsp"/>
+    <jsp:include page="/views/common/header-renew.jsp"/>
 
     <main class="checkout-container">
         <h1 style="margin-bottom: 30px;">Thanh toán đơn hàng</h1>
