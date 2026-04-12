@@ -83,7 +83,7 @@ public class AddCart extends HttpServlet {
                     """.formatted(cart.totalQuantity()));
             return;
         }
-
+ 
         response.sendRedirect(request.getHeader("Referer"));
     }
 
