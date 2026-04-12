@@ -26,7 +26,7 @@ public class SearchController extends HttpServlet {
         if (keyword == null || keyword.trim().isEmpty()) {
             response.setContentType("application/json");
             response.getWriter().print("[]");
-            return;
+            return; 
         }
 
         List<Product> products = productDAO.searchProducts(keyword.trim());
