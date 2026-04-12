@@ -10,7 +10,7 @@
     <title>
         <c:choose>
             <c:when test="${not empty pageTitle}">
-                ${pageTitle}
+                ${pageTitle} 
             </c:when>
             <c:otherwise>
                 INOLA
