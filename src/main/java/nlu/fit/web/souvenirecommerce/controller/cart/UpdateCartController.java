@@ -62,7 +62,7 @@ public class UpdateCartController extends HttpServlet {
             response.getWriter().write("{\"success\":false}");
         }
     }
-    
+     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request, response);
