@@ -17,7 +17,7 @@ public class SettingsDAO {
         try (Connection conn = DBContext.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
-
+ 
             while (rs.next()) {
                 settings.put(rs.getString("setting_key"), rs.getString("setting_value"));
             }
