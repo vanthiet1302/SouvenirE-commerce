@@ -23,7 +23,7 @@ public class ReviewDAO {
     ) {
         List<Review> list = new ArrayList<>();
 
-        StringBuilder sql = new StringBuilder("""
+        StringBuilder sql = new StringBuilder(""" 
             SELECT r.id,
                    r.product_id,
                    r.user_id,
