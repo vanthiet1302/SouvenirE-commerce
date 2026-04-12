@@ -10,7 +10,7 @@
                 <img src="${p.image}" alt="${p.name}"/>
 
                 <c:if test="${p.discountPercent != null}">
-                    <span class="badge-sale">-${p.discountPercent}%</span>
+                    <span class="badge-sale">-${p.discountPercent}%</span> 
                 </c:if>
             </div>
 

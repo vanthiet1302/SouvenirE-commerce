@@ -60,7 +60,7 @@ public class AdminSettingsController extends HttpServlet {
 
         try {
             if ("updateProfile".equals(action)) {
-                String fullName = req.getParameter("fullName");
+                String fullName = req.getParameter("fullName"); 
                 String email = req.getParameter("email");
                 String phone = req.getParameter("phone");
 
